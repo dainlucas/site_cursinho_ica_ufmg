@@ -1,0 +1,14 @@
+[build]
+  publish = "."
+
+# SPA redirects
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Admin access
+[[redirects]]
+  from = "/admin/*"
+  to = "/admin/index.html"
+  status = 200
