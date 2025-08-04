@@ -1,0 +1,30 @@
+{
+  "current": {
+    "name": "Edital 2025.1",
+    "period": "Março a Dezembro 2025",
+    "vacancies": "200 vagas disponíveis",
+    "registration_period": "15/01 a 28/02/2025",
+    "result_date": "15/03/2025",
+    "status": "Inscrições Abertas",
+    "file": "/assets/documents/edital-2025-1.pdf"
+  },
+  "process": {
+    "target": "Estudantes da rede pública",
+    "income": "Até 3 salários mínimos",
+    "education": "Cursando ou concluído o Ensino Médio",
+    "age": "A partir de 16 anos",
+    "documents": "RG, CPF, comprovante de renda e residência"
+  },
+  "subjects": [
+    "Matemática e suas Tecnologias",
+    "Linguagens, Códigos e suas Tecnologias",
+    "Ciências da Natureza e suas Tecnologias",
+    "Ciências Humanas e suas Tecnologias",
+    "Redação"
+  ],
+  "schedule": {
+    "weekdays": "19h00 às 22h00",
+    "saturdays": "08h00 às 12h00",
+    "tests": "Domingos (mensais)"
+  }
+}

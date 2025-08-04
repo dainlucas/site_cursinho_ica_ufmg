@@ -1,0 +1,6 @@
+Esta pasta deve conter:
+- edital-2025-1.pdf (Edital atual)
+- edital-2024-2.pdf (Edital anterior)
+- edital-2024-1.pdf (Edital anterior)
+- manual-inscricao.pdf (Manual de inscrição)
+- lista-documentos.pdf (Lista de documentos necessários)

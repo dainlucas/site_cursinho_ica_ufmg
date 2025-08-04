@@ -1,0 +1,5 @@
+Esta pasta deve conter:
+- logo-principal.png (Logo principal do cursinho)
+- logo-branco.png (Versão branca para fundos escuros)
+- favicon.ico (Ícone do navegador 16x16, 32x32)
+- logo-social.png (Para redes sociais 1200x630)

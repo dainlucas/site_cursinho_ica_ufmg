@@ -1,0 +1,18 @@
+[build]
+  publish = "."
+  
+[build.environment]
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  conditions = {Role = ["admin"]}
+
+# Enable Netlify Identity
+[context.production]
+  command = "echo 'Production build'"
+
+[template.environment]
+  NETLIFY_IDENTITY_ENABLED = "true"

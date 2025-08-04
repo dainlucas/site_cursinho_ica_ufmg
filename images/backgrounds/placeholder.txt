@@ -1,0 +1,5 @@
+Esta pasta deve conter:
+- hero-student.png (Imagem principal 800x600)
+- background-pattern.png (Padrão de fundo)
+- classroom.jpg (Foto sala de aula 1200x800)
+- students-studying.jpg (Foto estudantes 1200x800)

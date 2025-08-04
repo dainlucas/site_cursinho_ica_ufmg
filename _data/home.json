@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "title": "Oferecer aulas preparatórias gratuitas para vestibulares e Enem",
+    "subtitle": "Visando contribuir com a comunidade, este projeto irá preparar alunos da rede pública para o Enem de forma gratuita, democratizando o acesso ao ensino superior",
+    "button_text": "Edital Aqui"
+  },
+  "about": {
+    "title": "Sobre o Cursinho",
+    "subtitle": "Nosso compromisso é oferecer educação de qualidade e gratuita, preparando estudantes da rede pública para conquistar seus sonhos no ensino superior.",
+    "cards": [
+      {
+        "icon": "🎯",
+        "title": "Foco no ENEM",
+        "description": "Preparação específica para o Exame Nacional do Ensino Médio, com simulados e aulas direcionadas para o formato da prova."
+      },
+      {
+        "icon": "👥",
+        "title": "Turmas Reduzidas",
+        "description": "Grupos pequenos que permitem acompanhamento individualizado e melhor aproveitamento do conteúdo."
+      },
+      {
+        "icon": "📚",
+        "title": "Material Didático",
+        "description": "Apostilas e materiais de estudo fornecidos gratuitamente, além de acesso a plataformas digitais."
+      },
+      {
+        "icon": "⭐",
+        "title": "Professores Qualificados",
+        "description": "Equipe de professores experientes e comprometidos com o sucesso dos alunos."
+      },
+      {
+        "icon": "💡",
+        "title": "Orientação Vocacional",
+        "description": "Apoio para escolha de curso e universidade, além de orientações sobre processos seletivos."
+      },
+      {
+        "icon": "🏆",
+        "title": "Resultados Comprovados",
+        "description": "Alto índice de aprovação em universidades públicas e privadas através do ENEM."
+      }
+    ]
+  },
+  "info": {
+    "title": "Informações Importantes",
+    "items": [
+      {
+        "icon": "📅",
+        "title": "Período de Inscrições",
+        "description": "Janeiro a Março de cada ano"
+      },
+      {
+        "icon": "🎓",
+        "title": "Público-Alvo",
+        "description": "Estudantes da rede pública concluintes ou formados"
+      },
+      {
+        "icon": "⏰",
+        "title": "Horários",
+        "description": "Segunda a sexta: 19h às 22h\nSábados: 8h às 12h"
+      },
+      {
+        "icon": "💰",
+        "title": "Investimento",
+        "description": "Totalmente gratuito"
+      }
+    ]
+  }
+}

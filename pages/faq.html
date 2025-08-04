@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Perguntas Frequentes - Cursinho Comunitário</title>
+    <meta name="description" content="Tire suas dúvidas sobre o Cursinho Comunitário. Encontre respostas para as perguntas mais frequentes sobre inscrições, documentos e funcionamento.">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/accessibility.css">
+    
+    <style>
+        /* FAQ specific styles */
+        .faq-section {
+            margin-bottom: 2rem;
+        }
+        
+        .faq-category {
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .faq-category-header {
+            background: var(--primary-red);
+            color: white;
+            padding: 1.5rem;
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--border-gray);
+        }
+        
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+        
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            padding: 1.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .faq-question:focus {
+            outline: 2px solid var(--primary-red);
+            outline-offset: -2px;
+        }
+        
+        .faq-icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-icon {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+        
+        .search-box {
+            background: var(--white);
+            border: 2px solid var(--border-gray);
+            border-radius: 8px;
+            padding: 1rem;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 3rem;
+            display: block;
+            transition: border-color 0.3s ease;
+        }
+        
+        .search-box:focus {
+            border-color: var(--primary-red);
+            outline: none;
+        }
+        
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        
+        .quick-link {
+            background: var(--light-gray);
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.3s ease;
+        }
+        
+        .quick-link:hover {
+            background: var(--primary-red);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .contact-cta {
+            background: var(--light-pink);
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon" aria-hidden="true"></div>
+                    <div class="logo-text">
+                        <h1><a href="../index.html">Co<span class="highlight">mun</span>ICA</a></h1>
+                        <p>Cursinho Comunitário</p>
+                    </div>
+                </div>
+                <nav role="navigation" aria-label="Menu principal">
+                    <ul class="nav-menu" id="navMenu">
+                        <li><a href="../index.html">Início</a></li>
+                        <li><a href="noticias.html">Notícias</a></li>
+                        <li><a href="faq.html" class="active">FAQ</a></li>
+                        <li><a href="../index.html#editais">Edital</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu de navegação">
+                        ☰
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main style="padding: 4rem 0;">
+        <section class="section">
+            <div class="container">
+                <h1 class="section-title">Perguntas Frequentes</h1>
+                <p class="section-subtitle">Encontre respostas para as dúvidas mais comuns sobre nosso cursinho preparatório gratuito.</p>
+                
+                <!-- Search Box -->
+                <input type="text" class="search-box" id="faqSearch" placeholder="🔍 Buscar pergunta ou palavra-chave..." aria-label="Buscar nas perguntas frequentes">
+                
+                <!-- Quick Links -->
+                <div class="quick-links">
+                    <a href="#inscricoes" class="quick-link">📝 Inscrições</a>
+                    <a href="#documentos" class="quick-link">📄 Documentos</a>
+                    <a href="#funcionamento" class="quick-link">⚙️ Funcionamento</a>
+                    <a href="#ensino" class="quick-link">📚 Ensino</a>
+                    <a href="#geral" class="quick-link">❓ Geral</a>
+                </div>
+
+                <!-- FAQ Categories -->
+                <div class="faq-sections">
+                    
+                    <!-- Inscrições -->
+                    <div class="faq-category" id="inscricoes">
+                        <h2 class="faq-category-header">📝 Inscrições e Processo Seletivo</h2>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Como faço para me inscrever no cursinho?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>As inscrições são realizadas durante o período divulgado no edital (geralmente janeiro a março). Você deve acessar nossa página de editais, baixar o formulário de inscrição e entregar pessoalmente na secretaria junto com os documentos necessários.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Quem pode se inscrever no cursinho?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Podem se inscrever estudantes que:</p>
+                                <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                    <li>• Sejam da rede pública de ensino</li>
+                                    <li>• Estejam cursando ou tenham concluído o Ensino Médio</li>
+                                    <li>• Tenham renda familiar de até 3 salários mínimos</li>
+                                    <li>• Tenham idade mínima de 16 anos</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Quando saem os resultados do processo seletivo?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Os resultados são divulgados cerca de 15 dias após o encerramento das inscrições. A data exata é informada no edital. O resultado é publicado em nossa página de notícias e também afixado na secretaria.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Como funciona o processo seletivo?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>A seleção é feita por análise socioeconômica, considerando principalmente a renda familiar e a situação social do candidato. Não há prova eliminatória. O objetivo é atender quem mais precisa do apoio educacional gratuito.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Documentos -->
+                    <div class="faq-category" id="documentos">
+                        <h2 class="faq-category-header">📄 Documentação Necessária</h2>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Quais documentos preciso apresentar na inscrição?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Documentos obrigatórios:</p>
+                                <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                    <li>• RG e CPF (originais e cópias)</li>
+                                    <li>• Comprovante de residência atualizado</li>
+                                    <li>• Comprovante de renda familiar</li>
+                                    <li>• Histórico escolar ou declaração de matrícula</li>
+                                    <li>• Foto 3x4 recente</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Não tenho comprovante de renda. O que fazer?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Se você ou sua família não têm renda formal, pode apresentar uma declaração de próprio punho informando a situação, ou solicitar uma declaração de renda na assistência social do município. Também aceitamos declaração de desemprego do órgão competente.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Posso apresentar documentos digitalizados?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Não. Para a inscrição inicial, todos os documentos devem ser apresentados em cópias físicas, acompanhadas dos originais para conferência. Isso garante a autenticidade e segurança do processo seletivo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Funcionamento -->
+                    <div class="faq-category" id="funcionamento">
+                        <h2 class="faq-category-header">⚙️ Funcionamento do Cursinho</h2>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Quais são os horários das aulas?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>As aulas funcionam nos seguintes horários:</p>
+                                <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                    <li>• <strong>Segunda a sexta:</strong> 19h00 às 22h00</li>
+                                    <li>• <strong>Sábados:</strong> 08h00 às 12h00</li>
+                                    <li>• <strong>Simulados:</strong> Domingos (mensalmente)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Onde ficam as salas de aula?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Nossas aulas acontecem na Rua da Educação, 123, Centro - Montes Claros/MG. O local é de fácil acesso por transporte público e possui salas climatizadas e bem equipadas para o aprendizado.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Posso faltar às aulas? Qual é a frequência mínima?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>É importante manter regularidade nas aulas para um bom aproveitamento. Estabelecemos uma frequência mínima de 75% para continuidade no curso. Faltas justificadas (atestado médico, trabalho) são analisadas individualmente.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Como são organizadas as turmas?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>As turmas são organizadas de forma mista, com alunos de diferentes níveis de conhecimento. Isso permite troca de experiências e colaboração. Temos no máximo 40 alunos por turma para garantir atendimento individualizado.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ensino -->
+                    <div class="faq-category" id="ensino">
+                        <h2 class="faq-category-header">📚 Metodologia e Material Didático</h2>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Quais disciplinas são oferecidas?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Oferecemos todas as disciplinas do ENEM:</p>
+                                <ul style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                                    <li>• Matemática e suas Tecnologias</li>
+                                    <li>• Linguagens, Códigos e suas Tecnologias</li>
+                                    <li>• Ciências da Natureza e suas Tecnologias</li>
+                                    <li>• Ciências Humanas e suas Tecnologias</li>
+                                    <li>• Redação</li>
+                                    <li>• Orientação Vocacional (opcional)</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                O material didático é fornecido gratuitamente?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sim! Todo o material didático é 100% gratuito, incluindo apostilas de todas as disciplinas, listas de exercícios, simulados e acesso à plataforma digital de estudos. Os alunos também recebem cadernos e material básico de escrita.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Como são os simulados?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Realizamos simulados mensais seguindo exatamente o formato do ENEM: 4 provas de 45 questões cada + redação, aplicados em dois domingos consecutivos. Os resultados são entregues com análise detalhada do desempenho e orientações de estudo.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Os professores são qualificados?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sim! Nossa equipe é formada por professores experientes, muitos com pós-graduação e experiência em grandes cursinhos. Contamos também com estudantes universitários voluntários da UFMG que auxiliam no reforço e monitoria.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Geral -->
+                    <div class="faq-category" id="geral">
+                        <h2 class="faq-category-header">❓ Informações Gerais</h2>
+                        
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                O cursinho é realmente gratuito?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sim! O cursinho é 100% gratuito. Não cobramos nenhuma taxa de matrícula, mensalidade ou material didático. É um projeto social que visa democratizar o acesso ao ensino superior para estudantes de baixa renda.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Qual é a taxa de aprovação dos alunos?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Temos orgulho dos nossos resultados: cerca de 85% dos alunos que completam o curso são aprovados em universidades públicas ou conseguem bolsas em universidades privadas através do ENEM. Nos últimos 5 anos, mais de 500 alunos ingressaram no ensino superior.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Posso me inscrever se já fiz outro cursinho?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sim, não há impedimento. Muitos alunos buscam nosso cursinho após experiências em outros lugares. O importante é atender aos critérios socioeconômicos e ter o compromisso de frequentar regularmente as aulas.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Como posso ajudar o projeto como voluntário?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sempre precisamos de voluntários! Você pode atuar como professor, monitor, auxiliar administrativo ou apoiar com doações de material. Entre em contato conosco pelo WhatsApp ou e-mail para saber como contribuir com nossa missão.</p>
+                            </div>
+                        </div>
+
+                        <div class="faq-item">
+                            <button class="faq-question" aria-expanded="false">
+                                Há suporte psicológico ou orientação vocacional?
+                                <span class="faq-icon">+</span>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Sim! Oferecemos orientação vocacional mensal com psicólogos voluntários, ajudando na escolha da carreira e universidade. Também temos apoio emocional para lidar com a ansiedade do vestibular e pressões do período pré-universitário.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact CTA -->
+                <div class="contact-cta">
+                    <h3 style="color: var(--primary-red); margin-bottom: 1rem;">Não encontrou sua resposta?</h3>
+                    <p style="color: var(--text-gray); margin-bottom: 1.5rem;">
+                        Nossa equipe está sempre pronta para esclarecer suas dúvidas. Entre em contato conosco!
+                    </p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="https://wa.me/5538999999999?text=Olá! Tenho uma dúvida sobre o cursinho." 
+                           class="cta-button" target="_blank" rel="noopener">
+                            💬 WhatsApp
+                        </a>
+                        <a href="contato.html" class="cta-button" style="background: var(--dark-red);">
+                            ✉️ Página de Contato
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <div class="logo-icon" aria-hidden="true"></div>
+                        <div class="logo-text">
+                            <h1>Co<span class="highlight">mun</span>ICA</h1>
+                            <p>Cursinho Comunitário</p>
+                        </div>
+                    </div>
+                    <p>Democratizando o acesso ao ensino superior através da educação gratuita e de qualidade.</p>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon" aria-hidden="true">💬</span>
+                        <h5>WhatsApp</h5>
+                        <p><a href="https://wa.me/5538999999999" target="_blank" rel="noopener">(38) 99999-9999</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon" aria-hidden="true">✉️</span>
+                        <h5>E-mail</h5>
+                        <p><a href="mailto:contato@cursinhocomunitario.com">contato@cursinhocomunitario.com</a></p>
+                    </div>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon" aria-hidden="true">📍</span>
+                        <h5>Endereço</h5>
+                        <p>Rua da Educação, 123<br>Centro - Montes Claros/MG</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-bottom-content">
+                    <p>© 2025 Comunica ICA UFMG — Todos os direitos reservados</p>
+                    <a href="privacidade.html">Políticas de Privacidade</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/5538999999999" class="whatsapp-float" target="_blank" rel="noopener" title="Fale conosco no WhatsApp" aria-label="Abrir conversa no WhatsApp">
+        💬
+    </a>
+
+    <!-- JavaScript Files -->
+    <script src="../js/utils.js"></script>
+    <script src="../js/main.js"></script>
+    
+    <!-- FAQ Specific JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeFAQ();
+            initializeFAQSearch();
+        });
+
+        function initializeFAQ() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                            const otherQuestion = otherItem.querySelector('.faq-question');
+                            otherQuestion.setAttribute('aria-expanded', 'false');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    if (isActive) {
+                        item.classList.remove('active');
+                        question.setAttribute('aria-expanded', 'false');
+                    } else {
+                        item.classList.add('active');
+                        question.setAttribute('aria-expanded', 'true');
+                    }
+                });
+            });
+        }
+
+        function initializeFAQSearch() {
+            const searchBox = document.getElementById('faqSearch');
+            const faqItems = document.querySelectorAll('.faq-item');
+            const faqCategories = document.querySelectorAll('.faq-category');
+            
+            searchBox.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase().trim();
+                
+                if (searchTerm === '') {
+                    // Show all items and categories
+                    faqItems.forEach(item => item.style.display = 'block');
+                    faqCategories.forEach(category => category.style.display = 'block');
+                    return;
+                }
+                
+                faqCategories.forEach(category => {
+                    const categoryItems = category.querySelectorAll('.faq-item');
+                    let hasVisibleItems = false;
+                    
+                    categoryItems.forEach(item => {
+                        const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                        const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                        
+                        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                            item.style.display = 'block';
+                            hasVisibleItems = true;
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                    
+                    // Show/hide category based on whether it has visible items
+                    category.style.display = hasVisibleItems ? 'block' : 'none';
+                });
+            });
+        }
+
+        // Smooth scroll for quick links
+        document.querySelectorAll('.quick-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

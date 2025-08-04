@@ -1,0 +1,29 @@
+{
+  "title": "Entre em Contato",
+  "subtitle": "Estamos aqui para esclarecer suas dúvidas e ajudar você a ingressar no ensino superior.",
+  "info": [
+    {
+      "type": "email",
+      "icon": "✉️",
+      "title": "E-mail",
+      "content": "contato@cursinhocomunitario.com",
+      "link": "mailto:contato@cursinhocomunitario.com",
+      "extra": "Resposta em até 24h"
+    },
+    {
+      "type": "whatsapp",
+      "icon": "💬",
+      "title": "WhatsApp",
+      "content": "(38) 99999-9999",
+      "link": "https://wa.me/5538999999999",
+      "extra": "Atendimento rápido"
+    },
+    {
+      "type": "address",
+      "icon": "📍",
+      "title": "Endereço",
+      "content": "Rua da Educação, 123\nCentro - Montes Claros/MG\nCEP: 39400-000",
+      "extra": "Visitas mediante agendamento"
+    }
+  ]
+}

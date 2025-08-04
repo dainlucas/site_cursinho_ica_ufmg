@@ -1,0 +1,171 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  # Configurações gerais do site
+  - name: "config"
+    label: "⚙️ Configurações do Site"
+    files:
+      - file: "_data/site.json"
+        label: "Informações Gerais"
+        name: "site"
+        fields:
+          - {label: "Nome do Site", name: "title", widget: "string", default: "Cursinho Comunitário"}
+          - {label: "Descrição", name: "description", widget: "text"}
+          - {label: "Telefone WhatsApp", name: "whatsapp", widget: "string"}
+          - {label: "E-mail", name: "email", widget: "string"}
+          - {label: "Endereço Linha 1", name: "address_line1", widget: "string"}
+          - {label: "Endereço Linha 2", name: "address_line2", widget: "string"}
+          - {label: "Instagram URL", name: "instagram", widget: "string"}
+          - {label: "Facebook URL", name: "facebook", widget: "string"}
+          - {label: "Twitter URL", name: "twitter", widget: "string"}
+
+  # Página inicial
+  - name: "home"
+    label: "🏠 Página Inicial"
+    files:
+      - file: "_data/home.json"
+        label: "Conteúdo da Página Inicial"
+        name: "home"
+        fields:
+          - label: "Seção Hero"
+            name: "hero"
+            widget: "object"
+            fields:
+              - {label: "Título Principal", name: "title", widget: "string"}
+              - {label: "Subtítulo", name: "subtitle", widget: "text"}
+              - {label: "Texto do Botão", name: "button_text", widget: "string"}
+          
+          - label: "Seção Sobre"
+            name: "about"
+            widget: "object"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Subtítulo", name: "subtitle", widget: "text"}
+              - label: "Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - {label: "Ícone (emoji)", name: "icon", widget: "string"}
+                  - {label: "Título", name: "title", widget: "string"}
+                  - {label: "Descrição", name: "description", widget: "text"}
+          
+          - label: "Informações Importantes"
+            name: "info"
+            widget: "object"
+            fields:
+              - {label: "Título", name: "title", widget: "string"}
+              - label: "Itens"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Ícone (emoji)", name: "icon", widget: "string"}
+                  - {label: "Título", name: "title", widget: "string"}
+                  - {label: "Descrição", name: "description", widget: "string"}
+
+  # Editais
+  - name: "editais"
+    label: "📄 Editais e Vagas"
+    files:
+      - file: "_data/editais.json"
+        label: "Informações dos Editais"
+        name: "editais"
+        fields:
+          - label: "Edital Atual"
+            name: "current"
+            widget: "object"
+            fields:
+              - {label: "Nome do Edital", name: "name", widget: "string"}
+              - {label: "Período do Curso", name: "period", widget: "string"}
+              - {label: "Vagas Disponíveis", name: "vacancies", widget: "string"}
+              - {label: "Período de Inscrições", name: "registration_period", widget: "string"}
+              - {label: "Data do Resultado", name: "result_date", widget: "string"}
+              - {label: "Status", name: "status", widget: "select", options: ["Inscrições Abertas", "Inscrições Encerradas", "Resultados Divulgados"]}
+              - {label: "Arquivo do Edital (PDF)", name: "file", widget: "file", required: false}
+          
+          - label: "Informações do Processo"
+            name: "process"
+            widget: "object"
+            fields:
+              - {label: "Público-alvo", name: "target", widget: "string"}
+              - {label: "Renda familiar", name: "income", widget: "string"}
+              - {label: "Escolaridade", name: "education", widget: "string"}
+              - {label: "Idade mínima", name: "age", widget: "string"}
+              - {label: "Documentos necessários", name: "documents", widget: "text"}
+          
+          - label: "Disciplinas"
+            name: "subjects"
+            widget: "list"
+            default: ["Matemática e suas Tecnologias", "Linguagens e Códigos", "Ciências da Natureza", "Ciências Humanas", "Redação"]
+          
+          - label: "Horários"
+            name: "schedule"
+            widget: "object"
+            fields:
+              - {label: "Segunda a Sexta", name: "weekdays", widget: "string"}
+              - {label: "Sábados", name: "saturdays", widget: "string"}
+              - {label: "Simulados", name: "tests", widget: "string"}
+
+  # Notícias
+  - name: "news"
+    label: "📰 Notícias"
+    folder: "_data/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Título", name: "title", widget: "string"}
+      - {label: "Data", name: "date", widget: "datetime"}
+      - {label: "Categoria", name: "category", widget: "select", options: ["Destaque", "Comunicado", "Novidade", "Resultado", "Informativo", "Evento", "Parceria"]}
+      - {label: "Resumo", name: "summary", widget: "text"}
+      - {label: "Conteúdo", name: "body", widget: "markdown"}
+      - {label: "Destaque", name: "featured", widget: "boolean", default: false}
+      - {label: "Imagem (opcional)", name: "image", widget: "image", required: false}
+
+  # FAQ
+  - name: "faq"
+    label: "❓ FAQ"
+    files:
+      - file: "_data/faq.json"
+        label: "Perguntas Frequentes"
+        name: "faq"
+        fields:
+          - {label: "Título da Página", name: "title", widget: "string"}
+          - {label: "Subtítulo", name: "subtitle", widget: "text"}
+          - label: "Categorias"
+            name: "categories"
+            widget: "list"
+            fields:
+              - {label: "ID da Categoria", name: "id", widget: "string"}
+              - {label: "Nome da Categoria", name: "name", widget: "string"}
+              - {label: "Ícone (emoji)", name: "icon", widget: "string"}
+              - label: "Perguntas"
+                name: "questions"
+                widget: "list"
+                fields:
+                  - {label: "Pergunta", name: "question", widget: "string"}
+                  - {label: "Resposta", name: "answer", widget: "markdown"}
+
+  # Página de Contato
+  - name: "contact"
+    label: "📞 Contato"
+    files:
+      - file: "_data/contact.json"
+        label: "Página de Contato"
+        name: "contact"
+        fields:
+          - {label: "Título da Página", name: "title", widget: "string"}
+          - {label: "Subtítulo", name: "subtitle", widget: "text"}
+          - label: "Informações de Contato"
+            name: "info"
+            widget: "list"
+            fields:
+              - {label: "Tipo", name: "type", widget: "select", options: ["email", "whatsapp", "address"]}
+              - {label: "Ícone (emoji)", name: "icon", widget: "string"}
+              - {label: "Título", name: "title", widget: "string"}
+              - {label: "Conteúdo", name: "content", widget: "text"}
+              - {label: "Link/URL (opcional)", name: "link", widget: "string", required: false}
+              - {label: "Texto adicional", name: "extra", widget: "string", required: false}

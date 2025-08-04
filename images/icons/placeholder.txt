@@ -1,0 +1,6 @@
+Esta pasta deve conter:
+- whatsapp-icon.png (Ícone WhatsApp 64x64)
+- email-icon.png (Ícone email 64x64)
+- phone-icon.png (Ícone telefone 64x64)
+- location-icon.png (Ícone localização 64x64)
+- book-icon.png (Ícone livro/educação 64x64)
