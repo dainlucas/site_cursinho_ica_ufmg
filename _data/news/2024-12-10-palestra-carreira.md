@@ -1,8 +1,9 @@
 ---
-title: "Palestra sobre Escolha de Carreira"
+title: Palestra sobre Escolha de Carreira TESTE
 date: 2024-12-10T18:00:00.000Z
-category: "Evento"
-summary: "Realizamos uma palestra especial sobre orientação vocacional com psicólogos especializados em educação."
+category: Evento
+summary: Realizamos uma palestra especial sobre orientação vocacional com
+  psicólogos especializados em educação.
 featured: false
 ---
 
