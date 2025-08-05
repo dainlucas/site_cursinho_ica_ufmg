@@ -1,14 +1,21 @@
 [build]
   publish = "."
+  command = "echo 'Static site build complete'"
 
-# SPA redirects
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
-# Admin access
+# Admin access (deve vir primeiro)
 [[redirects]]
   from = "/admin/*"
   to = "/admin/index.html"
+  status = 200
+
+# API endpoints for data files
+[[redirects]]
+  from = "/_data/*"
+  to = "/_data/:splat"
+  status = 200
+
+# Main site redirect (deve vir por último)
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200

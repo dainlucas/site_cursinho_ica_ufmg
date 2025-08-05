@@ -6,18 +6,27 @@ class CMSDataLoader {
     }
 
     async loadJSON(path) {
-        if (this.cache.has(path)) {
+        // Cache busting: não usar cache em produção para sempre pegar dados atualizados
+        const useCache = window.location.hostname === 'localhost';
+        
+        if (useCache && this.cache.has(path)) {
             return this.cache.get(path);
         }
 
         try {
             const fullPath = path.startsWith('/') ? path : `/${path}`;
-            const response = await fetch(`${this.baseUrl}${fullPath}`);
+            // Adicionar timestamp para evitar cache do browser
+            const cacheBuster = useCache ? '' : `?v=${Date.now()}`;
+            const response = await fetch(`${this.baseUrl}${fullPath}${cacheBuster}`);
+            
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
-            this.cache.set(path, data);
+            
+            if (useCache) {
+                this.cache.set(path, data);
+            }
             return data;
         } catch (error) {
             console.warn(`Failed to load ${path}:`, error);
@@ -48,14 +57,34 @@ class CMSDataLoader {
     // Carrega notícias
     async loadNewsData() {
         try {
-            // Tentar carregar uma lista de notícias ou a notícia de exemplo
-            const response = await fetch('/_data/news/2025-01-04-inscricoes-abertas.md');
-            if (response.ok) {
-                const content = await response.text();
-                const newsItem = this.parseMarkdownNews(content);
-                return newsItem ? [newsItem] : [];
+            const newsFiles = [
+                '2025-01-04-inscricoes-abertas.md',
+                '2025-01-02-documentos-necessarios.md', 
+                '2024-12-28-novas-salas.md',
+                '2024-12-20-resultados-enem.md'
+            ];
+            
+            const newsItems = [];
+            
+            for (const file of newsFiles) {
+                try {
+                    const response = await fetch(`/_data/news/${file}`);
+                    if (response.ok) {
+                        const content = await response.text();
+                        const newsItem = this.parseMarkdownNews(content);
+                        if (newsItem) {
+                            newsItems.push(newsItem);
+                        }
+                    }
+                } catch (error) {
+                    console.warn(`Failed to load news file ${file}:`, error);
+                }
             }
-            return [];
+            
+            // Ordenar por data (mais recente primeiro)
+            newsItems.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            return newsItems;
         } catch (error) {
             console.warn('Failed to load news:', error);
             return [];
@@ -483,7 +512,27 @@ class CMSUpdater {
 document.addEventListener('DOMContentLoaded', () => {
     const updater = new CMSUpdater();
     updater.init().catch(console.error);
+    
+    // Atualizar conteúdo periodicamente em produção (a cada 5 minutos)
+    if (window.location.hostname !== 'localhost') {
+        setInterval(() => {
+            updater.loader.cache.clear(); // Limpar cache
+            updater.init().catch(console.error);
+        }, 5 * 60 * 1000); // 5 minutos
+    }
 });
+
+// Listener para mudanças via Netlify Identity (quando usuário faz login no CMS)
+if (window.netlifyIdentity) {
+    window.netlifyIdentity.on('login', () => {
+        console.log('CMS login detected, refreshing content...');
+        setTimeout(() => {
+            const updater = new CMSUpdater();
+            updater.loader.cache.clear();
+            updater.init().catch(console.error);
+        }, 2000);
+    });
+}
 
 // Exportar para uso em outras páginas
 window.CMSDataLoader = CMSDataLoader;
