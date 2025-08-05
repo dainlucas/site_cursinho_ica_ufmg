@@ -1,0 +1,85 @@
+{
+  "title": "Perguntas Frequentes",
+  "subtitle": "Encontre respostas para as dúvidas mais comuns sobre nosso cursinho preparatório gratuito.",
+  "categories": [
+    {
+      "id": "inscricoes",
+      "name": "Inscrições e Processo Seletivo",
+      "icon": "📝",
+      "questions": [
+        {
+          "question": "Como faço para me inscrever no cursinho?",
+          "answer": "<p>As inscrições são realizadas durante o período divulgado no edital (geralmente janeiro a março). Você deve acessar nossa página de editais, baixar o formulário de inscrição e entregar pessoalmente na secretaria junto com os documentos necessários.</p>"
+        },
+        {
+          "question": "Quem pode se inscrever no cursinho?",
+          "answer": "<p>Podem se inscrever estudantes que:</p><ul style=\"margin-top: 0.5rem; padding-left: 1.5rem;\"><li>• Sejam da rede pública de ensino</li><li>• Estejam cursando ou tenham concluído o Ensino Médio</li><li>• Tenham renda familiar de até 3 salários mínimos</li><li>• Tenham idade mínima de 16 anos</li></ul>"
+        },
+        {
+          "question": "Quando saem os resultados do processo seletivo?",
+          "answer": "<p>Os resultados são divulgados cerca de 15 dias após o encerramento das inscrições. A data exata é informada no edital. O resultado é publicado em nossa página de notícias e também afixado na secretaria.</p>"
+        }
+      ]
+    },
+    {
+      "id": "documentos",
+      "name": "Documentação Necessária",
+      "icon": "📄",
+      "questions": [
+        {
+          "question": "Quais documentos preciso apresentar na inscrição?",
+          "answer": "<p>Documentos obrigatórios:</p><ul style=\"margin-top: 0.5rem; padding-left: 1.5rem;\"><li>• RG e CPF (originais e cópias)</li><li>• Comprovante de residência atualizado</li><li>• Comprovante de renda familiar</li><li>• Histórico escolar ou declaração de matrícula</li><li>• Foto 3x4 recente</li></ul>"
+        },
+        {
+          "question": "Não tenho comprovante de renda. O que fazer?",
+          "answer": "<p>Se você ou sua família não têm renda formal, pode apresentar uma declaração de próprio punho informando a situação, ou solicitar uma declaração de renda na assistência social do município. Também aceitamos declaração de desemprego do órgão competente.</p>"
+        }
+      ]
+    },
+    {
+      "id": "funcionamento",
+      "name": "Funcionamento do Cursinho",
+      "icon": "⚙️",
+      "questions": [
+        {
+          "question": "Quais são os horários das aulas?",
+          "answer": "<p>As aulas funcionam nos seguintes horários:</p><ul style=\"margin-top: 0.5rem; padding-left: 1.5rem;\"><li>• <strong>Segunda a sexta:</strong> 19h00 às 22h00</li><li>• <strong>Sábados:</strong> 08h00 às 12h00</li><li>• <strong>Simulados:</strong> Domingos (mensalmente)</li></ul>"
+        },
+        {
+          "question": "Onde ficam as salas de aula?",
+          "answer": "<p>Nossas aulas acontecem na Rua da Educação, 123, Centro - Montes Claros/MG. O local é de fácil acesso por transporte público e possui salas climatizadas e bem equipadas para o aprendizado.</p>"
+        }
+      ]
+    },
+    {
+      "id": "ensino",
+      "name": "Metodologia e Material Didático",
+      "icon": "📚",
+      "questions": [
+        {
+          "question": "O material didático é fornecido gratuitamente?",
+          "answer": "<p>Sim! Todo o material didático é 100% gratuito, incluindo apostilas de todas as disciplinas, listas de exercícios, simulados e acesso à plataforma digital de estudos. Os alunos também recebem cadernos e material básico de escrita.</p>"
+        },
+        {
+          "question": "Como são os simulados?",
+          "answer": "<p>Realizamos simulados mensais seguindo exatamente o formato do ENEM: 4 provas de 45 questões cada + redação, aplicados em dois domingos consecutivos. Os resultados são entregues com análise detalhada do desempenho e orientações de estudo.</p>"
+        }
+      ]
+    },
+    {
+      "id": "geral",
+      "name": "Informações Gerais",
+      "icon": "❓",
+      "questions": [
+        {
+          "question": "O cursinho é realmente gratuito?",
+          "answer": "<p>Sim! O cursinho é 100% gratuito. Não cobramos nenhuma taxa de matrícula, mensalidade ou material didático. É um projeto social que visa democratizar o acesso ao ensino superior para estudantes de baixa renda.</p>"
+        },
+        {
+          "question": "Qual é a taxa de aprovação dos alunos?",
+          "answer": "<p>Temos orgulho dos nossos resultados: cerca de 85% dos alunos que completam o curso são aprovados em universidades públicas ou conseguem bolsas em universidades privadas através do ENEM. Nos últimos 5 anos, mais de 500 alunos ingressaram no ensino superior.</p>"
+        }
+      ]
+    }
+  ]
+}
