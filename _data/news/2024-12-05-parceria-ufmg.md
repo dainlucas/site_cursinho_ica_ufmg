@@ -1,5 +1,5 @@
 ---
-title: Nova Parceria com UF
+title: Nova Parceria com
 date: 2024-12-05T14:00:00.000Z
 category: Parceria
 summary: Firmamos parceria com a Universidade Federal de Minas Gerais para
