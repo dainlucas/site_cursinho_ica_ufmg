@@ -3,7 +3,6 @@ title: Palestra sobre Escolha de Carreira TESTE
 date: 2024-12-10T18:00:00.000Z
 summary: Realizamos uma palestra especial sobre orientação vocacional com
   psicólogos especializados em educação.
-featured: false
 ---
 
 Realizamos uma palestra especial sobre orientação vocacional com psicólogos especializados em educação.

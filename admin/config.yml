@@ -118,11 +118,12 @@ collections:
     fields:
       - {label: "Título", name: "title", widget: "string"}
       - {label: "Data", name: "date", widget: "datetime"}
-      - {label: "Categoria", name: "category", widget: "select", options: ["Destaque", "Comunicado", "Novidade", "Resultado", "Informativo", "Evento", "Parceria"]}
       - {label: "Resumo", name: "summary", widget: "text"}
       - {label: "Conteúdo", name: "body", widget: "markdown"}
-      - {label: "Destaque", name: "featured", widget: "boolean", default: false}
-      - {label: "Imagem (opcional)", name: "image", widget: "image", required: false}
+      - {label: "Imagem para página individual (opcional)", name: "image", widget: "image", required: false}
+      - {label: "Texto alternativo da imagem", name: "imageAlt", widget: "string", required: false}
+      - {label: "Autor", name: "author", widget: "string", required: false}
+      - {label: "Tempo de leitura", name: "readTime", widget: "string", required: false, default: "2 min"}
 
   # FAQ
   - name: "faq"

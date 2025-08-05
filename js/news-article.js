@@ -148,6 +148,9 @@ class NewsArticleManager {
             imageEl.src = this.newsData.image;
             imageEl.alt = this.newsData.imageAlt || this.newsData.title;
             imageContainer.style.display = 'block';
+        } else if (imageContainer) {
+            // Esconder completamente o container se não houver imagem
+            imageContainer.style.display = 'none';
         }
     }
 

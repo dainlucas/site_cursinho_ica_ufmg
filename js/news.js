@@ -64,14 +64,9 @@ class NewsManager {
         card.onclick = () => window.location.href = newsUrl;
         card.style.cursor = 'pointer';
 
-        const defaultImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjdGQUZDIi8+CjxwYXRoIGQ9Ik0yMDAgMTAwTDE4MCA4MEgyMjBMMjAwIDEwMFoiIGZpbGw9IiNFMkU4RjAiLz4KPHN2Zz4K';
-
         const formattedDate = new Date(news.date).toLocaleDateString('pt-BR');
         
         card.innerHTML = `
-            <div class="news-card-image">
-                <img src="${news.image || defaultImage}" alt="${news.imageAlt || news.title}" onerror="this.src='${defaultImage}'">
-            </div>
             <div class="news-card-content">
                 <div class="news-card-meta">
                     <span class="news-date">${formattedDate}</span>

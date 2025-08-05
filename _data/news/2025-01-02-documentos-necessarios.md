@@ -2,7 +2,6 @@
 title: "Documentos Necessários para Inscrição"
 date: 2025-01-02T10:00:00.000Z
 summary: "Confira a lista completa de documentos necessários para realizar sua inscrição no cursinho preparatório 2025.1."
-featured: false
 image: "/images/uploads/documentos.jpg"
 imageAlt: "Documentos organizados sobre mesa"
 author: "Secretaria Acadêmica"

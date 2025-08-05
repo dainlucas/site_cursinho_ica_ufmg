@@ -13,7 +13,9 @@
       "Bash(done)",
       "Bash(do sed -i '/Edital.*href.*editais.*Edital/d' \"$file\")",
       "WebFetch(domain:ufmg.br)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(for file in *.md)",
+      "Bash(do sed -i '/^featured:/d' \"$file\")"
     ],
     "deny": []
   }
