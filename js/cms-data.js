@@ -173,14 +173,12 @@ class CMSUpdater {
         });
 
         // Atualizar redes sociais
-        const socialLinks = document.querySelectorAll('a[href*="instagram"], a[href*="facebook"], a[href*="twitter"]');
+        const socialLinks = document.querySelectorAll('a[href*="instagram"], a[href*="facebook"]');
         socialLinks.forEach(link => {
             if (link.href.includes('instagram') && siteData.instagram) {
                 link.href = siteData.instagram;
             } else if (link.href.includes('facebook') && siteData.facebook) {
                 link.href = siteData.facebook;
-            } else if (link.href.includes('twitter') && siteData.twitter) {
-                link.href = siteData.twitter;
             }
         });
         
@@ -315,10 +313,17 @@ class CMSUpdater {
             });
 
             // Atualizar link do arquivo do edital
-            const editalLinks = document.querySelectorAll('a[href*="edital"]');
+            const editalLinks = document.querySelectorAll('a[href*="edital"], #edital-pdf-button');
             editalLinks.forEach(link => {
                 if (currentEdital.file) {
                     link.href = currentEdital.file;
+                    // Mostrar botão se arquivo existir
+                    link.style.display = 'inline-block';
+                } else {
+                    // Esconder botão se não houver arquivo
+                    if (link.id === 'edital-pdf-button') {
+                        link.style.display = 'none';
+                    }
                 }
             });
 

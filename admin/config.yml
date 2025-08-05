@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
 
 collections:
   # Configurações gerais do site
@@ -22,7 +22,6 @@ collections:
           - {label: "Endereço Linha 2", name: "address_line2", widget: "string"}
           - {label: "Instagram URL", name: "instagram", widget: "string"}
           - {label: "Facebook URL", name: "facebook", widget: "string"}
-          - {label: "Twitter URL", name: "twitter", widget: "string"}
 
   # Página inicial
   - name: "home"
@@ -85,7 +84,7 @@ collections:
               - {label: "Período de Inscrições", name: "registration_period", widget: "string"}
               - {label: "Data do Resultado", name: "result_date", widget: "string"}
               - {label: "Status", name: "status", widget: "select", options: ["Inscrições Abertas", "Inscrições Encerradas", "Resultados Divulgados"]}
-              - {label: "Arquivo do Edital (PDF)", name: "file", widget: "file", required: false}
+              - {label: "Arquivo do Edital (PDF)", name: "file", widget: "file", required: false, media_library: {config: {multiple: false}}}
           
           - label: "Informações do Processo"
             name: "process"

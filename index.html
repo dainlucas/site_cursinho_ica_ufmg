@@ -15,12 +15,6 @@
     <meta property="og:description" content="Cursinho preparatório gratuito para ENEM e vestibulares. Democratizando o acesso ao ensino superior.">
     <meta property="og:image" content="">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="">
-    <meta property="twitter:title" content="Cursinho Comunitário - Preparação Gratuita para ENEM">
-    <meta property="twitter:description" content="Cursinho preparatório gratuito para ENEM e vestibulares. Democratizando o acesso ao ensino superior.">
-    <meta property="twitter:image" content="">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="images/logo/favicon.ico">
@@ -44,9 +38,12 @@
         <div class="container">
             <div class="top-bar-content">
                 <div class="social-icons">
-                    <a href="https://wa.me/5538999999999" target="_blank" aria-label="WhatsApp" title="Entre em contato pelo WhatsApp">📱</a>
-                    <a href="https://twitter.com/cursinhocomunitario" target="_blank" aria-label="Twitter" title="Siga-nos no Twitter">🐦</a>
-                    <a href="https://instagram.com/cursinhocomunitario" target="_blank" aria-label="Instagram" title="Siga-nos no Instagram">📷</a>
+                    <a href="https://wa.me/5538999999999" target="_blank" aria-label="WhatsApp" title="Entre em contato pelo WhatsApp">
+                        <img src="images/icons/logo_whatsapp.png" alt="WhatsApp" class="social-icon">
+                    </a>
+                    <a href="https://instagram.com/cursinhocomunitario" target="_blank" aria-label="Instagram" title="Siga-nos no Instagram">
+                        <img src="images/icons/logo_instagram.png" alt="Instagram" class="social-icon">
+                    </a>
                 </div>
             </div>
         </div>
@@ -56,13 +53,17 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon" aria-hidden="true"></div>
-                    <div class="logo-text">
-                        <h1>Co<span class="highlight">mun</span>ICA</h1>
-                        <p>Cursinho Comunitário</p>
+                <div class="header-top">
+                    <div class="logo">
+                        <a href="#inicio">
+                            <img src="images/logo/logo.png" alt="Cursinho Comunitário" class="logo-image">
+                        </a>
                     </div>
+                    <p class="site-name">Cursinho Comunitário</p>
                 </div>
+                <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu de navegação">
+                    ☰ Menu
+                </button>
                 <nav role="navigation" aria-label="Menu principal">
                     <ul class="nav-menu" id="navMenu">
                         <li><a href="#inicio" class="active">Início</a></li>
@@ -71,9 +72,6 @@
                         <li><a href="#editais">Edital</a></li>
                         <li><a href="pages/contato.html">Contato</a></li>
                     </ul>
-                    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu de navegação">
-                        ☰
-                    </button>
                 </nav>
             </div>
         </div>
@@ -172,11 +170,11 @@
                         <p><strong>Período:</strong> Março a Dezembro 2025</p>
                         <p><strong>Vagas:</strong> 200 vagas disponíveis</p>
                         <p><strong>Inscrições:</strong> 15/01 a 28/02/2025</p>
-                        <p style="margin-top: 1rem;">
-                            <a href="assets/documents/edital-2025-1.pdf" style="color: var(--primary-red); font-weight: 600;" target="_blank" rel="noopener">
-                                <span aria-hidden="true">📥</span> Baixar Edital Completo
+                        <div style="margin-top: 1.5rem;">
+                            <a href="assets/documents/edital-2025-1.pdf" class="cta-button" target="_blank" rel="noopener" id="edital-pdf-button">
+                                📥 Baixar Edital
                             </a>
-                        </p>
+                        </div>
                     </article>
                     <article class="card">
                         <h3><span aria-hidden="true">📋</span> Processo Seletivo</h3>
@@ -210,17 +208,16 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="logo">
-                        <div class="logo-icon" aria-hidden="true"></div>
-                        <div class="logo-text">
-                            <h1>Co<span class="highlight">mun</span>ICA</h1>
-                            <p>Cursinho Comunitário</p>
-                        </div>
+                        <img src="images/logo/logo.png" alt="Cursinho Comunitário" class="logo-image">
                     </div>
                     <p>Visando contribuir com a comunidade, este projeto irá preparar alunos da rede pública para o Enem de forma gratuita, democratizando o acesso ao ensino superior.</p>
                     <div class="footer-social">
-                        <a href="https://wa.me/5538999999999" target="_blank" aria-label="WhatsApp" title="Entre em contato pelo WhatsApp">📱</a>
-                        <a href="https://twitter.com/cursinhocomunitario" target="_blank" aria-label="Twitter" title="Siga-nos no Twitter">🐦</a>
-                        <a href="https://instagram.com/cursinhocomunitario" target="_blank" aria-label="Instagram" title="Siga-nos no Instagram">📷</a>
+                        <a href="https://wa.me/5538999999999" target="_blank" aria-label="WhatsApp" title="Entre em contato pelo WhatsApp">
+                            <img src="images/icons/logo_whatsapp.png" alt="WhatsApp" class="social-icon">
+                        </a>
+                        <a href="https://instagram.com/cursinhocomunitario" target="_blank" aria-label="Instagram" title="Siga-nos no Instagram">
+                            <img src="images/icons/logo_instagram.png" alt="Instagram" class="social-icon">
+                        </a>
                     </div>
                 </div>
 

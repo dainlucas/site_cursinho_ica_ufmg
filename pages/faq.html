@@ -92,23 +92,6 @@
             padding: 0 1.5rem 1.5rem;
         }
         
-        .search-box {
-            background: var(--white);
-            border: 2px solid var(--border-gray);
-            border-radius: 8px;
-            padding: 1rem;
-            font-size: 1rem;
-            width: 100%;
-            max-width: 500px;
-            margin: 0 auto 3rem;
-            display: block;
-            transition: border-color 0.3s ease;
-        }
-        
-        .search-box:focus {
-            border-color: var(--primary-red);
-            outline: none;
-        }
         
         .quick-links {
             display: grid;
@@ -147,13 +130,17 @@
     <header>
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon" aria-hidden="true"></div>
-                    <div class="logo-text">
-                        <h1><a href="../index.html">Co<span class="highlight">mun</span>ICA</a></h1>
-                        <p>Cursinho Comunitário</p>
+                <div class="header-top">
+                    <div class="logo">
+                        <a href="../index.html">
+                            <img src="../images/logo/logo.png" alt="Cursinho Comunitário" class="logo-image">
+                        </a>
                     </div>
+                    <p class="site-name">Cursinho Comunitário</p>
                 </div>
+                <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu de navegação">
+                    ☰ Menu
+                </button>
                 <nav role="navigation" aria-label="Menu principal">
                     <ul class="nav-menu" id="navMenu">
                         <li><a href="../index.html">Início</a></li>
@@ -162,9 +149,6 @@
                         <li><a href="../index.html#editais">Edital</a></li>
                         <li><a href="contato.html">Contato</a></li>
                     </ul>
-                    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navMenu" aria-label="Abrir menu de navegação">
-                        ☰
-                    </button>
                 </nav>
             </div>
         </div>
@@ -177,8 +161,6 @@
                 <h1 class="section-title">Perguntas Frequentes</h1>
                 <p class="section-subtitle">Encontre respostas para as dúvidas mais comuns sobre nosso cursinho preparatório gratuito.</p>
                 
-                <!-- Search Box -->
-                <input type="text" class="search-box" id="faqSearch" placeholder="🔍 Buscar pergunta ou palavra-chave..." aria-label="Buscar nas perguntas frequentes">
                 
                 <!-- Quick Links -->
                 <div class="quick-links">
@@ -470,11 +452,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="logo">
-                        <div class="logo-icon" aria-hidden="true"></div>
-                        <div class="logo-text">
-                            <h1>Co<span class="highlight">mun</span>ICA</h1>
-                            <p>Cursinho Comunitário</p>
-                        </div>
+                        <img src="../images/logo/logo.png" alt="Cursinho Comunitário" class="logo-image">
                     </div>
                     <p>Democratizando o acesso ao ensino superior através da educação gratuita e de qualidade.</p>
                 </div>
@@ -529,7 +507,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             initializeFAQ();
-            initializeFAQSearch();
         });
 
         function initializeFAQ() {
@@ -562,42 +539,6 @@
             });
         }
 
-        function initializeFAQSearch() {
-            const searchBox = document.getElementById('faqSearch');
-            const faqItems = document.querySelectorAll('.faq-item');
-            const faqCategories = document.querySelectorAll('.faq-category');
-            
-            searchBox.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase().trim();
-                
-                if (searchTerm === '') {
-                    // Show all items and categories
-                    faqItems.forEach(item => item.style.display = 'block');
-                    faqCategories.forEach(category => category.style.display = 'block');
-                    return;
-                }
-                
-                faqCategories.forEach(category => {
-                    const categoryItems = category.querySelectorAll('.faq-item');
-                    let hasVisibleItems = false;
-                    
-                    categoryItems.forEach(item => {
-                        const question = item.querySelector('.faq-question').textContent.toLowerCase();
-                        const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
-                        
-                        if (question.includes(searchTerm) || answer.includes(searchTerm)) {
-                            item.style.display = 'block';
-                            hasVisibleItems = true;
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                    
-                    // Show/hide category based on whether it has visible items
-                    category.style.display = hasVisibleItems ? 'block' : 'none';
-                });
-            });
-        }
 
         // Smooth scroll for quick links
         document.querySelectorAll('.quick-link').forEach(link => {
