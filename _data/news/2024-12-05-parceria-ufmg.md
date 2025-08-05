@@ -1,9 +1,11 @@
 ---
-title: Nova Parceria com TESTE
+title: Nova Parceria com
 date: 2024-12-05T14:00:00.000Z
+category: Comunicado
 summary: Firmamos parceria com a Universidade Federal de Minas Gerais para
   oferecer palestras e visitas técnicas aos nossos alunos.
 featured: false
+image: /assets/uploads/istockphoto-1307609675-612x612.jpg
 ---
 
 Firmamos parceria com a Universidade Federal de Minas Gerais para oferecer palestras e visitas técnicas aos nossos alunos.
