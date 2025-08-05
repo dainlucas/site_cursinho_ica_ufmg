@@ -424,6 +424,15 @@ footer {
         background: white;
         color: var(--text-dark);
         padding: 0;
+        width: 100%;
+        margin: 0;
+        border-radius: 0 !important;
+    }
+    
+    .header-content,
+    .header-left,
+    .header-top {
+        border-radius: 0 !important;
     }
     
     /* Header mobile limpo e moderno */
@@ -437,6 +446,10 @@ footer {
         margin-right: -1rem;
         width: 100vw;
         box-sizing: border-box;
+        border-radius: 0;
+        position: relative;
+        left: 0;
+        right: 0;
     }
     
     /* Logo + Nome como um grupo */
@@ -527,11 +540,11 @@ footer {
     
     /* Sections mobile */
     main {
-        padding: 2rem 0;
+        padding: 1rem 0;
     }
     
     .section {
-        padding: 2rem 0;
+        padding: 1.5rem 0;
     }
 
     .footer-content {
