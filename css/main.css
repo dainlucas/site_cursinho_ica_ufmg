@@ -144,12 +144,27 @@ header {
 .hero-image {
     text-align: center;
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.hero-image::before {
-    content: '👩‍🎓';
-    font-size: 15rem;
-    opacity: 0.8;
+.hero-banner-desktop {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.hero-banner-mobile {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 /* Main Content */
@@ -256,8 +271,17 @@ footer {
         font-size: 2.5rem;
     }
 
-    .hero-image::before {
-        font-size: 10rem;
+    .hero-banner-desktop {
+        display: none;
+    }
+    
+    .hero-banner-mobile {
+        display: block !important;
+        max-height: 250px;
+    }
+    
+    .hero-banner-fallback {
+        display: block !important;
     }
 
     .section-title {

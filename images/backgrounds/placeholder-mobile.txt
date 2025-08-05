@@ -1,0 +1,13 @@
+Banner mobile placeholder
+========================
+
+Este é um placeholder para o banner mobile.
+Quando você tiver uma imagem específica para mobile, renomeie-a para "banner_mobile.png" e substitua este arquivo.
+
+Recomendações para o banner mobile:
+- Formato vertical ou quadrado
+- Dimensões sugeridas: 600x400px ou 800x600px
+- Formato: PNG ou JPG
+- Tamanho do arquivo: máximo 500KB para melhor performance
+
+O banner mobile será exibido automaticamente em telas menores que 768px.
