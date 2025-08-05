@@ -61,7 +61,10 @@ class CMSDataLoader {
                 '2025-01-04-inscricoes-abertas.md',
                 '2025-01-02-documentos-necessarios.md', 
                 '2024-12-28-novas-salas.md',
-                '2024-12-20-resultados-enem.md'
+                '2024-12-20-resultados-enem.md',
+                '2024-12-15-novos-materiais.md',
+                '2024-12-10-palestra-carreira.md',
+                '2024-12-05-parceria-ufmg.md'
             ];
             
             const newsItems = [];
@@ -180,6 +183,12 @@ class CMSUpdater {
                 link.href = siteData.twitter;
             }
         });
+        
+        // Atualizar descrição do rodapé
+        const footerDescription = document.querySelector('footer .footer-section p');
+        if (footerDescription && siteData.description) {
+            footerDescription.textContent = siteData.description;
+        }
     }
 
     // Atualiza página inicial
@@ -269,6 +278,9 @@ class CMSUpdater {
                 }
             });
         }
+        
+        // Atualizar seção de editais na página inicial (integração adicional)
+        await this.updateEditaisData();
     }
 
     // Atualiza dados dos editais
