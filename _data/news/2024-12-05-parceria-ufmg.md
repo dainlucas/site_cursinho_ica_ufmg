@@ -1,8 +1,9 @@
 ---
-title: "Nova Parceria com UFMG"
+title: Nova Parceria com UFMG TESTE TESTE TESTE
 date: 2024-12-05T14:00:00.000Z
-category: "Parceria"
-summary: "Firmamos parceria com a Universidade Federal de Minas Gerais para oferecer palestras e visitas técnicas aos nossos alunos."
+category: Parceria
+summary: Firmamos parceria com a Universidade Federal de Minas Gerais para
+  oferecer palestras e visitas técnicas aos nossos alunos. TESTE
 featured: false
 ---
 
