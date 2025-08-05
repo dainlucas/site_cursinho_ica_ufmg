@@ -308,18 +308,15 @@
 }
 
 .news-date::before {
-    content: "📅 ";
-    margin-right: 0.3rem;
+    content: "";
 }
 
 .news-author::before {
-    content: "👤 ";
-    margin-right: 0.3rem;
+    content: "";
 }
 
 .news-read-time::before {
-    content: "⏱️ ";
-    margin-right: 0.3rem;
+    content: "";
 }
 
 .featured-news-title {

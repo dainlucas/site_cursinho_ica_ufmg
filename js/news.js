@@ -21,9 +21,6 @@ class NewsManager {
         // Renderizar notícias
         this.renderNews();
         
-        // Configurar modal
-        this.setupModal();
-        
         console.log('Gerenciador de notícias inicializado com sucesso!');
     }
 
@@ -130,10 +127,11 @@ class NewsManager {
         // Atualizar tags
         this.renderTags(featuredCard.querySelector('.news-tags'), featuredNews.tags);
 
-        // Adicionar dados para o modal
+        // Configurar link para página individual
         const readMoreBtn = featuredCard.querySelector('.news-read-more-btn');
         if (readMoreBtn) {
-            readMoreBtn.dataset.news = JSON.stringify(featuredNews);
+            const newsId = this.createNewsId(featuredNews);
+            readMoreBtn.href = `noticia-template.html?id=${newsId}`;
         }
 
         console.log('Notícia em destaque renderizada:', featuredNews.title);
@@ -164,9 +162,15 @@ class NewsManager {
     }
 
     createNewsCard(news) {
+        const newsId = this.createNewsId(news);
+        const newsUrl = `noticia-template.html?id=${newsId}`;
+        
         const card = document.createElement('article');
         card.className = 'news-card';
-        card.onclick = () => this.openNewsModal(news);
+        
+        // Fazer o card inteiro clicável
+        card.onclick = () => window.location.href = newsUrl;
+        card.style.cursor = 'pointer';
 
         const defaultImage = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjdGQUZDIi8+CjxwYXRoIGQ9Ik0yMDAgMTAwTDE4MCA4MEgyMjBMMjAwIDEwMFoiIGZpbGw9IiNFMkU4RjAiLz4KPHN2Zz4K';
 
@@ -188,6 +192,27 @@ class NewsManager {
         `;
 
         return card;
+    }
+
+    createNewsId(news) {
+        // Criar ID baseado na data e título (similar ao nome do arquivo)
+        if (!news.date || !news.title) return null;
+        
+        const date = new Date(news.date);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        
+        const titleSlug = news.title
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '') // Remove acentos
+            .replace(/[^a-z0-9\s-]/g, '') // Remove caracteres especiais
+            .replace(/\s+/g, '-') // Substitui espaços por hífens
+            .replace(/-+/g, '-') // Remove hífens duplicados
+            .replace(/^-|-$/g, ''); // Remove hífens do início e fim
+            
+        return `${year}-${month}-${day}-${titleSlug}`;
     }
 
     renderTags(container, tags) {
@@ -218,92 +243,6 @@ class NewsManager {
         }
     }
 
-    setupModal() {
-        // Fechar modal com ESC
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                this.closeNewsModal();
-            }
-        });
-    }
-
-    openNewsModal(news) {
-        const modal = document.getElementById('newsModal');
-        if (!modal) return;
-
-        // Atualizar conteúdo do modal
-        this.populateModal(news);
-        
-        // Mostrar modal
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden'; // Prevenir scroll do body
-
-        console.log('Modal aberto para:', news.title);
-    }
-
-    populateModal(news) {
-        const modal = document.getElementById('newsModal');
-        
-        // Imagem
-        const image = modal.querySelector('.news-modal-image');
-        if (image) {
-            image.src = news.image || 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDQwMCAyMDAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI0MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRjdGQUZDIi8+CjxwYXRoIGQ9Ik0yMDAgMTAwTDE4MCA4MEgyMjBMMjAwIDEwMFoiIGZpbGw9IiNFMkU4RjAiLz4KPHN2Zz4K';
-            image.alt = news.imageAlt || news.title;
-        }
-
-        // Badge
-        const badge = modal.querySelector('.news-badge');
-        if (badge) {
-            badge.textContent = (news.category || 'NOTÍCIA').toUpperCase();
-        }
-
-        // Metadados
-        const dateEl = modal.querySelector('.news-modal-date');
-        const authorEl = modal.querySelector('.news-modal-author');
-        const readTimeEl = modal.querySelector('.news-modal-read-time');
-
-        if (dateEl && news.date) {
-            const formattedDate = new Date(news.date).toLocaleDateString('pt-BR', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-            });
-            dateEl.textContent = formattedDate;
-        }
-
-        if (authorEl && news.author) {
-            authorEl.textContent = news.author;
-        }
-
-        if (readTimeEl && news.readTime) {
-            readTimeEl.textContent = news.readTime;
-        }
-
-        // Título
-        const title = modal.querySelector('.news-modal-title');
-        if (title) {
-            title.textContent = news.title;
-        }
-
-        // Tags
-        this.renderTags(modal.querySelector('.news-modal-tags'), news.tags);
-
-        // Conteúdo
-        const contentBody = modal.querySelector('.news-modal-content-body');
-        if (contentBody) {
-            // Converter markdown básico para HTML
-            const htmlContent = this.markdownToHtml(news.body || '');
-            contentBody.innerHTML = htmlContent;
-        }
-    }
-
-    closeNewsModal() {
-        const modal = document.getElementById('newsModal');
-        if (modal) {
-            modal.style.display = 'none';
-            document.body.style.overflow = ''; // Restaurar scroll do body
-        }
-    }
 
     truncateText(text, maxLength) {
         if (!text) return '';
@@ -346,23 +285,6 @@ class NewsManager {
     }
 }
 
-// Funções globais para compatibilidade com eventos inline
-function openNewsModal(element) {
-    try {
-        const newsData = JSON.parse(element.dataset.news);
-        if (window.newsManager) {
-            window.newsManager.openNewsModal(newsData);
-        }
-    } catch (error) {
-        console.error('Erro ao abrir modal:', error);
-    }
-}
-
-function closeNewsModal() {
-    if (window.newsManager) {
-        window.newsManager.closeNewsModal();
-    }
-}
 
 // Inicializar quando o DOM estiver carregado
 document.addEventListener('DOMContentLoaded', () => {

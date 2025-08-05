@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notícias - Cursinho Comunitário</title>
-    <meta name="description" content="Acompanhe as últimas notícias e comunicados do Cursinho Comunitário. Fique por dentro das novidades e informações importantes.">
+    <title id="page-title">Notícia - Cursinho Comunitário</title>
+    <meta name="description" id="page-description" content="">
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="../css/reset.css">
@@ -33,7 +33,7 @@
                     <ul class="nav-menu" id="navMenu">
                         <li><a href="../index.html">Início</a></li>
                         <li><a href="../index.html#editais">Edital</a></li>
-                        <li><a href="noticias.html" class="active">Notícias</a></li>
+                        <li><a href="noticias.html">Notícias</a></li>
                         <li><a href="faq.html">FAQ</a></li>
                         <li><a href="contato.html">Contato</a></li>
                     </ul>
@@ -44,57 +44,56 @@
 
     <!-- Main Content -->
     <main style="padding: 4rem 0;">
-        <section class="section">
+        <!-- Breadcrumb -->
+        <section class="breadcrumb-section">
             <div class="container">
-                <h1 class="section-title">Notícias e Comunicados</h1>
-                <p class="section-subtitle">Fique por dentro das últimas novidades, comunicados importantes e informações sobre o cursinho.</p>
-                
-                <!-- News Filter -->
-                <div class="news-filter" style="margin-bottom: 2rem;">
-                    <button class="filter-btn active" data-category="all">Todas</button>
-                    <button class="filter-btn" data-category="destaque">Destaques</button>
-                    <button class="filter-btn" data-category="comunicado">Comunicados</button>
-                    <button class="filter-btn" data-category="evento">Eventos</button>
-                    <button class="filter-btn" data-category="resultado">Resultados</button>
-                </div>
-
-                <!-- Featured News -->
-                <div class="featured-news-section" style="margin-bottom: 3rem;">
-                    <h2 style="color: var(--primary-red); margin-bottom: 1.5rem; font-size: 1.8rem;">Notícia em Destaque</h2>
-                    <article class="featured-news-card" style="display: none;">
-                        <div class="featured-news-image">
-                            <img src="" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
-                            <div class="news-badge featured-badge">DESTAQUE</div>
-                        </div>
-                        <div class="featured-news-content">
-                            <div class="news-meta">
-                                <span class="news-date"></span>
-                                <span class="news-author"></span>
-                                <span class="news-read-time"></span>
-                            </div>
-                            <h3 class="featured-news-title"></h3>
-                            <p class="featured-news-summary"></p>
-                            <div class="news-tags"></div>
-                            <a href="#" class="news-read-more-btn">Ler Notícia Completa</a>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- News Grid -->
-                <div class="news-grid">
-                    <!-- News items will be loaded here by CMS -->
-                </div>
-
-                <!-- Load More Button -->
-                <div style="text-align: center; margin-top: 3rem;">
-                    <button class="cta-button" id="load-more-news" style="display: none;">
-                        Carregar Mais Notícias
-                    </button>
-                </div>
+                <nav class="breadcrumb">
+                    <a href="../index.html">Início</a> / 
+                    <a href="noticias.html">Notícias</a> / 
+                    <span id="breadcrumb-title">Carregando...</span>
+                </nav>
             </div>
         </section>
-    </main>
 
+        <!-- Article Content -->
+        <article class="news-article">
+            <div class="container">
+                <!-- Article Header -->
+                <header class="article-header">
+                    <div class="article-meta">
+                        <span class="article-category" id="article-category">NOTÍCIA</span>
+                        <time class="article-date" id="article-date"></time>
+                    </div>
+                    <h1 class="article-title" id="article-title">Carregando...</h1>
+                    <div class="article-info">
+                        <span class="article-author" id="article-author"></span>
+                        <span class="article-read-time" id="article-read-time"></span>
+                    </div>
+                </header>
+
+                <!-- Article Image -->
+                <div class="article-image-container" id="article-image-container" style="display: none;">
+                    <img id="article-image" src="" alt="" class="article-image">
+                </div>
+
+                <!-- Article Summary -->
+                <div class="article-summary" id="article-summary"></div>
+
+                <!-- Article Tags -->
+                <div class="article-tags" id="article-tags"></div>
+
+                <!-- Article Content -->
+                <div class="article-content" id="article-content">
+                    <p>Carregando conteúdo...</p>
+                </div>
+
+                <!-- Back to News -->
+                <div class="article-navigation">
+                    <a href="noticias.html" class="back-button">Voltar para Notícias</a>
+                </div>
+            </div>
+        </article>
+    </main>
 
     <!-- Footer -->
     <footer>
@@ -151,6 +150,6 @@
     <script src="../js/utils.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/cms-data.js"></script>
-    <script src="../js/news.js"></script>
+    <script src="../js/news-article.js"></script>
 </body>
 </html>
