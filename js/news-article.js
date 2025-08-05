@@ -95,11 +95,6 @@ class NewsArticleManager {
             breadcrumbTitle.textContent = this.newsData.title;
         }
 
-        // Categoria
-        const categoryEl = document.getElementById('article-category');
-        if (categoryEl && this.newsData.category) {
-            categoryEl.textContent = this.newsData.category.toUpperCase();
-        }
 
         // Data
         const dateEl = document.getElementById('article-date');
@@ -140,8 +135,6 @@ class NewsArticleManager {
             summaryEl.innerHTML = `<p class="lead">${this.newsData.summary}</p>`;
         }
 
-        // Tags
-        this.renderTags();
 
         // Conteúdo
         this.renderContent();
@@ -158,24 +151,6 @@ class NewsArticleManager {
         }
     }
 
-    renderTags() {
-        const tagsContainer = document.getElementById('article-tags');
-        if (!tagsContainer || !this.newsData.tags || !Array.isArray(this.newsData.tags)) return;
-
-        tagsContainer.innerHTML = '';
-        
-        const tagsTitle = document.createElement('span');
-        tagsTitle.className = 'tags-title';
-        tagsTitle.textContent = 'Tags: ';
-        tagsContainer.appendChild(tagsTitle);
-
-        this.newsData.tags.forEach(tag => {
-            const tagEl = document.createElement('span');
-            tagEl.className = 'article-tag';
-            tagEl.textContent = tag;
-            tagsContainer.appendChild(tagEl);
-        });
-    }
 
     renderContent() {
         const contentEl = document.getElementById('article-content');

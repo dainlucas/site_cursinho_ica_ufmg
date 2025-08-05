@@ -1,7 +1,6 @@
 ---
 title: "Resultados ENEM 2024"
 date: 2024-12-20T16:00:00.000Z  
-category: "Resultado"
 summary: "Nossos alunos conquistaram excelentes resultados no ENEM 2024! Parabenizamos todos pela dedicação."
 featured: false
 ---

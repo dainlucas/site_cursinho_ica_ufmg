@@ -1,7 +1,6 @@
 ---
 title: "Novos Materiais Didáticos"
 date: 2024-12-15T09:00:00.000Z
-category: "Informativo"
 summary: "Recebemos novos materiais didáticos atualizados para 2025, incluindo apostilas de todas as disciplinas do ENEM."
 featured: false
 ---
