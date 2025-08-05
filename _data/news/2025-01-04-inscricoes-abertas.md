@@ -1,12 +1,14 @@
 ---
-title: "Inscrições Abertas para 2025.1"
-date: 2025-01-04T10:00:00-03:00
-summary: "Estão abertas as inscrições para o primeiro semestre de 2025! São 200 vagas disponíveis para estudantes da rede pública."
+readTime: 3 min
+title: Inscrições Abertas para 2025.1
+category: Novidade
+summary: Estão abertas as inscrições para o primeiro semestre de 2025! São 200
+  vagas disponíveis para estudantes da rede pública.
+author: Coordenação do Cursinho
 featured: true
-image: "/images/uploads/inscricoes-abertas.jpg"
-imageAlt: "Estudantes em sala de aula durante preparação para ENEM"
-author: "Coordenação do Cursinho"
-readTime: "3 min"
+imageAlt: Estudantes em sala de aula durante preparação para ENEM
+date: 2025-01-04T10:00:00-03:00
+image: ""
 ---
 
 Estão abertas as inscrições para o primeiro semestre de 2025! São **200 vagas disponíveis** para estudantes da rede pública. O período de inscrições vai até **28 de fevereiro**.
