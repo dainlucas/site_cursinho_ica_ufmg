@@ -481,45 +481,91 @@ class CMSUpdater {
 
     // Atualiza página de notícias
     async updateNewsPage() {
-        if (!window.location.pathname.includes('noticias')) return;
+        // Verificar se estamos na página de notícias
+        const isNewsPage = window.location.pathname.includes('noticias') || 
+                          document.querySelector('.section-title')?.textContent?.includes('Notícias');
         
+        if (!isNewsPage) return;
+        
+        console.log('Atualizando página de notícias...');
         const newsData = await this.loader.loadNewsData();
-        if (!newsData || newsData.length === 0) return;
+        if (!newsData || newsData.length === 0) {
+            console.warn('Nenhum dado de notícia encontrado');
+            return;
+        }
+
+        console.log('Dados de notícias carregados:', newsData);
 
         // Atualizar notícia em destaque
-        const featuredNews = newsData.find(news => news.featured) || newsData[0];
+        const featuredNews = newsData.find(news => news.featured === true || news.featured === "true") || newsData[0];
         if (featuredNews) {
-            const featuredSection = document.querySelector('.featured-news, [style*="light-pink"]');
+            console.log('Notícia em destaque:', featuredNews);
+            
+            // Buscar pela seção de destaque usando múltiplos seletores
+            const featuredSection = document.querySelector('[style*="light-pink"]') || 
+                                   document.querySelector('.featured-news');
+            
             if (featuredSection) {
                 const title = featuredSection.querySelector('h2');
-                const content = featuredSection.querySelector('p');
+                const content = featuredSection.querySelector('p:not(:has(strong))') || 
+                               featuredSection.querySelector('p');
                 const date = featuredSection.querySelector('small');
 
-                if (title) title.textContent = featuredNews.title;
-                if (content) content.innerHTML = featuredNews.summary || featuredNews.body.substring(0, 200) + '...';
+                if (title) {
+                    title.textContent = `🚨 ${featuredNews.title}`;
+                    console.log('Título atualizado:', title.textContent);
+                }
+                
+                if (content && featuredNews.summary) {
+                    content.innerHTML = featuredNews.summary;
+                    console.log('Conteúdo atualizado:', content.innerHTML);
+                }
+                
                 if (date && featuredNews.date) {
                     const formattedDate = new Date(featuredNews.date).toLocaleDateString('pt-BR');
                     date.textContent = `📅 ${formattedDate}`;
+                    console.log('Data atualizada:', date.textContent);
                 }
+            } else {
+                console.warn('Seção de notícia em destaque não encontrada');
             }
         }
 
-        // Atualizar grid de notícias
+        // Atualizar grid de notícias - apenas o primeiro card
         const newsGrid = document.querySelector('.cards-grid');
         if (newsGrid && newsData.length > 0) {
-            // Manter as notícias existentes mas atualizar a primeira com dados dinâmicos
             const firstCard = newsGrid.querySelector('.card');
             if (firstCard && newsData[0]) {
                 const news = newsData[0];
                 const title = firstCard.querySelector('h3');
-                const content = firstCard.querySelector('p:last-of-type');
+                const content = firstCard.querySelector('p:not(:has(li))'); // Pegar parágrafo que não tem lista
                 const category = firstCard.querySelector('span');
+                const date = firstCard.querySelector('small');
 
-                if (title) title.textContent = news.title;
-                if (content) content.textContent = news.summary || news.body.substring(0, 150) + '...';
-                if (category && news.category) category.textContent = news.category.toUpperCase();
+                if (title) {
+                    title.textContent = `📋 ${news.title}`;
+                    console.log('Título do primeiro card atualizado:', title.textContent);
+                }
+                
+                if (content) {
+                    content.textContent = news.summary || news.body.substring(0, 150) + '...';
+                    console.log('Conteúdo do primeiro card atualizado');
+                }
+                
+                if (category && news.category) {
+                    category.textContent = news.category.toUpperCase();
+                    console.log('Categoria atualizada:', category.textContent);
+                }
+                
+                if (date && news.date) {
+                    const formattedDate = new Date(news.date).toLocaleDateString('pt-BR');
+                    date.textContent = `📅 ${formattedDate}`;
+                    console.log('Data do primeiro card atualizada:', date.textContent);
+                }
             }
         }
+        
+        console.log('Atualização da página de notícias concluída');
     }
 
     // Inicializa todas as atualizações
