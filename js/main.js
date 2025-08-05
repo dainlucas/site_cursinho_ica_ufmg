@@ -13,14 +13,22 @@ function initializeMenuToggle() {
     if (menuToggle && navMenu) {
         addEventHandler(menuToggle, 'click', () => {
             navMenu.classList.toggle('active');
-            menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+            menuToggle.classList.toggle('active');
+            const menuIcon = menuToggle.querySelector('.menu-icon');
+            if (menuIcon) {
+                menuIcon.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+            }
         });
 
         // Close menu when clicking on a link
         addEventHandler(navMenu, 'click', (e) => {
             if (e.target.tagName === 'A') {
                 navMenu.classList.remove('active');
-                menuToggle.textContent = '☰';
+                menuToggle.classList.remove('active');
+                const menuIcon = menuToggle.querySelector('.menu-icon');
+                if (menuIcon) {
+                    menuIcon.textContent = '☰';
+                }
             }
         });
 
@@ -28,7 +36,11 @@ function initializeMenuToggle() {
         addEventHandler(document, 'click', (e) => {
             if (!navMenu.contains(e.target) && !menuToggle.contains(e.target)) {
                 navMenu.classList.remove('active');
-                menuToggle.textContent = '☰';
+                menuToggle.classList.remove('active');
+                const menuIcon = menuToggle.querySelector('.menu-icon');
+                if (menuIcon) {
+                    menuIcon.textContent = '☰';
+                }
             }
         });
     }

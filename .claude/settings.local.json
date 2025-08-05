@@ -15,7 +15,9 @@
       "WebFetch(domain:ufmg.br)",
       "Bash(python:*)",
       "Bash(for file in *.md)",
-      "Bash(do sed -i '/^featured:/d' \"$file\")"
+      "Bash(do sed -i '/^featured:/d' \"$file\")",
+      "Bash(for file in editais.html faq.html sobre.html)",
+      "Bash(do sed -i '/contact-info/,/<\\/div>/{ /contact-info/,/<\\/div>/d; }' \"$file\")"
     ],
     "deny": []
   }

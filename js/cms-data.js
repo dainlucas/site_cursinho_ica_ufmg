@@ -230,16 +230,11 @@ class CMSUpdater {
         if (heroTitle && homeData.hero?.title) {
             // Procurar por texto em destaque (entre aspas ou asteriscos)
             const text = homeData.hero.title;
-            const highlightPatterns = [
-                /preparatórias gratuitas/gi,
-                /gratuitas/gi,
-                /\*\*(.*?)\*\*/g
-            ];
-            
             let processedText = text;
-            highlightPatterns.forEach(pattern => {
-                processedText = processedText.replace(pattern, '<span class="highlight">$1</span>');
-            });
+            
+            // Destacar palavras específicas
+            processedText = processedText.replace(/preparatórias gratuitas/gi, '<span class="highlight">preparatórias gratuitas</span>');
+            processedText = processedText.replace(/\*\*(.*?)\*\*/g, '<span class="highlight">$1</span>');
             
             heroTitle.innerHTML = processedText;
         }

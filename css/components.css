@@ -34,6 +34,12 @@
     margin-top: 2rem;
 }
 
+/* Better alignment for 2-card layouts */
+#editais .cards-grid {
+    max-width: 800px;
+    margin: 2rem auto 0 auto;
+}
+
 .card {
     background: var(--white);
     border-radius: 8px;

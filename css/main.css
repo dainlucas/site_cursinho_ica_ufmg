@@ -56,9 +56,19 @@ header {
     height: 26px;
 }
 
-/* Site name - hidden on desktop */
+/* Header layout for homepage */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Site name - visible on homepage desktop */
 .site-name {
-    display: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0;
 }
 
 .header-top {
@@ -100,10 +110,19 @@ header {
 
 .menu-toggle {
     display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
+    background: var(--white);
+    border: 2px solid var(--primary-red);
+    border-radius: 4px;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
     cursor: pointer;
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: var(--light-gray);
+    transform: scale(1.05);
 }
 
 /* Hero Section */
@@ -185,14 +204,36 @@ main {
 /* Footer */
 footer {
     background: var(--light-pink);
-    padding: 3rem 0 1rem;
+    padding: 2rem 0 1rem;
 }
 
 .footer-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 2rem;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+}
+
+.footer-content .footer-section {
+    margin-bottom: 0;
+}
+
+.footer-content .logo {
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.footer-content h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 1rem;
+}
+
+.footer-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-gray);
+    margin-bottom: 0;
 }
 
 .footer-section h4 {
@@ -212,8 +253,8 @@ footer {
     background-color: var(--primary-red);
     color: var(--white);
     text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
+    padding: 0.75rem 0;
+    margin-top: 1.5rem;
 }
 
 .footer-bottom-content {
@@ -245,7 +286,7 @@ footer {
     .nav-menu {
         display: none;
         position: absolute;
-        top: calc(100% + 1rem);
+        top: 100%;
         left: 0;
         right: 0;
         background: var(--white);
@@ -255,6 +296,11 @@ footer {
         z-index: 1000;
         transition: all 0.3s ease;
         border-top: 1px solid var(--light-gray);
+        margin-top: 0;
+    }
+    
+    nav {
+        position: static;
     }
 
     .nav-menu.active {
@@ -352,13 +398,77 @@ footer {
         padding: 0;
     }
     
+    /* Header mobile limpo e moderno */
     .header-content {
-        flex-direction: column;
+        display: flex;
         align-items: center;
-        gap: 0;
-        position: relative;
+        justify-content: space-between;
+        background: var(--primary-red);
+        padding: 1rem 1.5rem;
+        margin-left: -1rem;
+        margin-right: -1rem;
+        width: 100vw;
+        box-sizing: border-box;
     }
     
+    /* Logo + Nome como um grupo */
+    .header-left {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    
+    .header-left .logo-image {
+        height: 55px;
+        width: auto;
+        filter: brightness(0) invert(1);
+    }
+    
+    .site-name {
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 0;
+        line-height: 1.2;
+    }
+    
+    /* Menu hamburger moderno */
+    .menu-toggle {
+        background: rgba(255, 255, 255, 0.95);
+        color: var(--text-dark);
+        border: none;
+        border-radius: 8px;
+        padding: 0.6rem 1rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+    
+    .menu-toggle:hover {
+        background: white;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+    .menu-toggle:active {
+        transform: translateY(0);
+    }
+    
+    .menu-toggle:active {
+        transform: scale(0.95);
+    }
+    
+    .menu-toggle.active {
+        background: var(--light-gray);
+        border-color: var(--light-gray);
+    }
+    
+    /* For other pages - keep original layout */
     .header-top {
         display: flex;
         justify-content: space-between;
@@ -371,30 +481,15 @@ footer {
         position: relative;
     }
     
-    .logo-image {
-        height: 70px;
-        max-width: 250px;
+    .header-top .logo-image {
+        height: 90px;
+        max-width: 280px;
         filter: brightness(0) invert(1);
     }
     
-    .site-name {
-        color: white;
-        font-size: 1rem;
-        font-weight: 600;
-        margin: 0;
-        display: block;
-    }
-    
-    .menu-toggle {
-        background: transparent;
-        color: var(--text-dark);
-        border: 2px solid var(--primary-red);
-        border-radius: 4px;
-        padding: 0.5rem 1rem;
-        font-size: 0.9rem;
-        margin: 1rem 0;
-        display: block;
-        align-self: center;
+    .nav-menu.active + .menu-toggle .menu-text,
+    .menu-toggle.active .menu-text {
+        display: none;
     }
     
     /* Container mobile */
@@ -412,13 +507,15 @@ footer {
     }
 
     .footer-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
+        padding: 0 1rem;
     }
     
-    .footer-section .logo {
-        display: none;
+    .footer-content h3 {
+        font-size: 1.3rem;
+    }
+    
+    .footer-content p {
+        font-size: 1rem;
     }
 
     .footer-bottom-content {
@@ -468,8 +565,31 @@ footer {
         padding: 0 0.5rem;
     }
     
-    .logo-image {
-        height: 40px;
-        max-width: 150px;
+    .header-top .logo-image,
+    .header-left .logo-image {
+        height: 45px;
+        max-width: 100px;
+        filter: brightness(0) invert(1);
+    }
+    
+    .header-content {
+        padding: 0.8rem 1rem;
+    }
+    
+    .header-left {
+        gap: 0.6rem;
+    }
+    
+    .header-left .logo-image {
+        height: 45px;
+    }
+    
+    .site-name {
+        font-size: 0.95rem;
+    }
+    
+    .menu-toggle {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
     }
 }
