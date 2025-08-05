@@ -3,26 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeMenuToggle();
     initializeSmoothScrolling();
     initializeScrollSpy();
-    initializeBannerFallback();
 });
-
-// Gerenciar banner mobile fallback
-function initializeBannerFallback() {
-    const bannerMobile = document.querySelector('.hero-banner-mobile');
-    const bannerFallback = document.querySelector('.hero-banner-fallback');
-    
-    if (bannerMobile && bannerFallback) {
-        bannerMobile.addEventListener('error', function() {
-            if (window.innerWidth <= 768) {
-                bannerFallback.style.display = 'block';
-            }
-        });
-        
-        bannerMobile.addEventListener('load', function() {
-            bannerFallback.style.display = 'none';
-        });
-    }
-}
 
 // Mobile Menu Toggle functionality
 function initializeMenuToggle() {
