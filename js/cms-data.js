@@ -58,6 +58,14 @@ class CMSDataLoader {
 
     // Carrega notícias
     async loadNewsData() {
+        // Usar cache para evitar múltiplas requisições
+        const cacheKey = 'all-news';
+        const useCache = window.location.hostname === 'localhost';
+        
+        if (useCache && this.cache.has(cacheKey)) {
+            return this.cache.get(cacheKey);
+        }
+
         try {
             const newsFiles = [
                 '2025-01-04-inscricoes-abertas.md',
@@ -69,25 +77,44 @@ class CMSDataLoader {
                 '2024-12-05-parceria-ufmg.md'
             ];
             
-            const newsItems = [];
-            
-            for (const file of newsFiles) {
+            // Fazer todas as requisições em paralelo com timeout
+            const promises = newsFiles.map(async file => {
                 try {
-                    const response = await fetch(`/_data/news/${file}`);
+                    // Timeout de 3 segundos por arquivo
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 3000);
+                    
+                    const response = await fetch(`/_data/news/${file}`, {
+                        signal: controller.signal
+                    });
+                    
+                    clearTimeout(timeoutId);
+                    
                     if (response.ok) {
                         const content = await response.text();
                         const newsItem = this.parseMarkdownNews(content);
-                        if (newsItem) {
-                            newsItems.push(newsItem);
-                        }
+                        return newsItem;
                     }
                 } catch (error) {
-                    console.warn(`Failed to load news file ${file}:`, error);
+                    if (error.name === 'AbortError') {
+                        console.warn(`Timeout loading news file ${file}`);
+                    } else {
+                        console.warn(`Failed to load news file ${file}:`, error);
+                    }
                 }
-            }
+                return null;
+            });
+            
+            const results = await Promise.all(promises);
+            const newsItems = results.filter(item => item !== null);
             
             // Ordenar por data (mais recente primeiro)
             newsItems.sort((a, b) => new Date(b.date) - new Date(a.date));
+            
+            // Cachear resultado
+            if (useCache) {
+                this.cache.set(cacheKey, newsItems);
+            }
             
             return newsItems;
         } catch (error) {

@@ -8,6 +8,9 @@ class NewsManager {
     async init() {
         console.log('Inicializando gerenciador de notícias...');
         
+        // Mostrar indicador de carregamento
+        this.showLoadingState();
+        
         // Carregar dados das notícias
         await this.loadNewsData();
         
@@ -78,6 +81,17 @@ class NewsManager {
         `;
 
         return card;
+    }
+
+    showLoadingState() {
+        const newsGrid = document.querySelector('.news-grid');
+        if (newsGrid) {
+            newsGrid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                    <p style="color: var(--text-gray); font-size: 1.1rem;">Carregando notícias...</p>
+                </div>
+            `;
+        }
     }
 
     createNewsId(news) {
