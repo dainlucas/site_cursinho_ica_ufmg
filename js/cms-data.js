@@ -20,16 +20,18 @@ class CMSDataLoader {
             const response = await fetch(`${this.baseUrl}${fullPath}${cacheBuster}`);
             
             if (!response.ok) {
+                console.error(`Failed to fetch ${fullPath}: HTTP ${response.status}`);
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const data = await response.json();
+            console.log(`Successfully loaded data from ${fullPath}:`, data);
             
             if (useCache) {
                 this.cache.set(path, data);
             }
             return data;
         } catch (error) {
-            console.warn(`Failed to load ${path}:`, error);
+            console.error(`Failed to load ${path}:`, error);
             return null;
         }
     }
@@ -327,6 +329,12 @@ class CMSUpdater {
                 }
             });
 
+            // Atualizar link de inscrição
+            const registrationButton = document.querySelector('#registration-button');
+            if (registrationButton && currentEdital.registration_link) {
+                registrationButton.href = currentEdital.registration_link;
+            }
+
             // Atualizar status das inscrições
             const statusElements = document.querySelectorAll('.alert, .status');
             statusElements.forEach(element => {
@@ -516,12 +524,31 @@ class CMSUpdater {
 
     // Inicializa todas as atualizações
     async init() {
-        await this.updateContactInfo();
-        await this.updateHomePage();
-        await this.updateEditaisData();
-        await this.updateContactPage();
-        await this.updateFAQPage();
-        await this.updateNewsPage();
+        console.log('Iniciando atualização do CMS...');
+        
+        try {
+            console.log('Atualizando informações de contato...');
+            await this.updateContactInfo();
+            
+            console.log('Atualizando página inicial...');
+            await this.updateHomePage();
+            
+            console.log('Atualizando dados de editais...');
+            await this.updateEditaisData();
+            
+            console.log('Atualizando página de contato...');
+            await this.updateContactPage();
+            
+            console.log('Atualizando FAQ...');
+            await this.updateFAQPage();
+            
+            console.log('Atualizando notícias...');
+            await this.updateNewsPage();
+            
+            console.log('Atualização do CMS concluída com sucesso!');
+        } catch (error) {
+            console.error('Erro durante atualização do CMS:', error);
+        }
     }
 }
 
