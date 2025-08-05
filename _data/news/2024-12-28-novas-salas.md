@@ -1,11 +1,12 @@
 ---
-title: "Novas Salas de Aula Inauguradas"  
+title: Novas Salas de Aula Inauguradas
 date: 2024-12-28T14:00:00.000Z
-summary: "Inauguramos duas novas salas de aula climatizadas e equipadas com projetores para melhor atender nossos alunos."
-image: "/images/uploads/novas-salas.jpg"
-imageAlt: "Vista das novas salas de aula climatizadas com projetores"
-author: "Direção do Cursinho"
-readTime: "2 min"
+summary: Inauguramos duas novas salas de aula climatizadas e equipadas com
+  projetores para melhor atender nossos alunos.
+image: ""
+imageAlt: Vista das novas salas de aula climatizadas com projetores
+author: Direção do Cursinho
+readTime: 2 min
 ---
 
 Inauguramos duas novas salas de aula climatizadas e equipadas com projetores para melhor atender nossos alunos.
