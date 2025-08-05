@@ -479,93 +479,33 @@ class CMSUpdater {
         }
     }
 
-    // Atualiza página de notícias
+    // Atualiza página de notícias - Nova versão integrada com NewsManager
     async updateNewsPage() {
         // Verificar se estamos na página de notícias
         const isNewsPage = window.location.pathname.includes('noticias') || 
-                          document.querySelector('.section-title')?.textContent?.includes('Notícias');
+                          document.querySelector('.news-grid');
         
         if (!isNewsPage) return;
         
-        console.log('Atualizando página de notícias...');
+        console.log('CMS: Página de notícias detectada, delegando para NewsManager...');
+        
+        // A nova página de notícias é gerenciada pelo NewsManager
+        // O CMS só precisa garantir que os dados estejam disponíveis
         const newsData = await this.loader.loadNewsData();
         if (!newsData || newsData.length === 0) {
-            console.warn('Nenhum dado de notícia encontrado');
+            console.warn('CMS: Nenhum dado de notícia encontrado');
             return;
         }
 
-        console.log('Dados de notícias carregados:', newsData);
-
-        // Atualizar notícia em destaque
-        const featuredNews = newsData.find(news => news.featured === true || news.featured === "true") || newsData[0];
-        if (featuredNews) {
-            console.log('Notícia em destaque:', featuredNews);
-            
-            // Buscar pela seção de destaque usando múltiplos seletores
-            const featuredSection = document.querySelector('[style*="light-pink"]') || 
-                                   document.querySelector('.featured-news');
-            
-            if (featuredSection) {
-                const title = featuredSection.querySelector('h2');
-                const content = featuredSection.querySelector('p:not(:has(strong))') || 
-                               featuredSection.querySelector('p');
-                const date = featuredSection.querySelector('small');
-
-                if (title) {
-                    title.textContent = `🚨 ${featuredNews.title}`;
-                    console.log('Título atualizado:', title.textContent);
-                }
-                
-                if (content && featuredNews.summary) {
-                    content.innerHTML = featuredNews.summary;
-                    console.log('Conteúdo atualizado:', content.innerHTML);
-                }
-                
-                if (date && featuredNews.date) {
-                    const formattedDate = new Date(featuredNews.date).toLocaleDateString('pt-BR');
-                    date.textContent = `📅 ${formattedDate}`;
-                    console.log('Data atualizada:', date.textContent);
-                }
-            } else {
-                console.warn('Seção de notícia em destaque não encontrada');
-            }
-        }
-
-        // Atualizar grid de notícias - apenas o primeiro card
-        const newsGrid = document.querySelector('.cards-grid');
-        if (newsGrid && newsData.length > 0) {
-            const firstCard = newsGrid.querySelector('.card');
-            if (firstCard && newsData[0]) {
-                const news = newsData[0];
-                const title = firstCard.querySelector('h3');
-                const content = firstCard.querySelector('p:not(:has(li))'); // Pegar parágrafo que não tem lista
-                const category = firstCard.querySelector('span');
-                const date = firstCard.querySelector('small');
-
-                if (title) {
-                    title.textContent = `📋 ${news.title}`;
-                    console.log('Título do primeiro card atualizado:', title.textContent);
-                }
-                
-                if (content) {
-                    content.textContent = news.summary || news.body.substring(0, 150) + '...';
-                    console.log('Conteúdo do primeiro card atualizado');
-                }
-                
-                if (category && news.category) {
-                    category.textContent = news.category.toUpperCase();
-                    console.log('Categoria atualizada:', category.textContent);
-                }
-                
-                if (date && news.date) {
-                    const formattedDate = new Date(news.date).toLocaleDateString('pt-BR');
-                    date.textContent = `📅 ${formattedDate}`;
-                    console.log('Data do primeiro card atualizada:', date.textContent);
-                }
-            }
-        }
+        console.log('CMS: Dados de notícias carregados e disponíveis para NewsManager:', newsData.length, 'notícias');
         
-        console.log('Atualização da página de notícias concluída');
+        // Se o NewsManager já estiver carregado, não precisa fazer nada
+        // O NewsManager vai carregar e renderizar as notícias automaticamente
+        if (window.newsManager) {
+            console.log('CMS: NewsManager já inicializado, dados disponíveis');
+        } else {
+            console.log('CMS: Aguardando inicialização do NewsManager...');
+        }
     }
 
     // Inicializa todas as atualizações

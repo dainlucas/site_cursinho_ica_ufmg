@@ -49,103 +49,75 @@
                 <h1 class="section-title">Notícias e Comunicados</h1>
                 <p class="section-subtitle">Fique por dentro das últimas novidades, comunicados importantes e informações sobre o cursinho.</p>
                 
+                <!-- News Filter -->
+                <div class="news-filter" style="margin-bottom: 2rem;">
+                    <button class="filter-btn active" data-category="all">Todas</button>
+                    <button class="filter-btn" data-category="destaque">Destaques</button>
+                    <button class="filter-btn" data-category="comunicado">Comunicados</button>
+                    <button class="filter-btn" data-category="evento">Eventos</button>
+                    <button class="filter-btn" data-category="resultado">Resultados</button>
+                </div>
+
                 <!-- Featured News -->
-                <div style="background: var(--light-pink); border-left: 4px solid var(--primary-red); padding: 2rem; margin-bottom: 3rem; border-radius: 0 8px 8px 0;">
-                    <div style="display: flex; align-items: center; margin-bottom: 1rem;">
-                        <span style="background: var(--primary-red); color: white; padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; margin-right: 1rem;">DESTAQUE</span>
-                        <small style="color: var(--text-gray);">📅 04 de Janeiro de 2025</small>
-                    </div>
-                    <h2 style="color: var(--primary-red); margin-bottom: 1rem; font-size: 1.5rem;">🚨 Inscrições Abertas para 2025.1</h2>
-                    <p style="margin-bottom: 1rem; line-height: 1.6;">
-                        Estão abertas as inscrições para o primeiro semestre de 2025! São <strong>200 vagas disponíveis</strong> 
-                        para estudantes da rede pública. O período de inscrições vai até <strong>28 de fevereiro</strong>.
-                    </p>
-                    <a href="editais.html" class="cta-button" style="display: inline-block;">
-                        📝 Ver Edital Completo
-                    </a>
+                <div class="featured-news-section" style="margin-bottom: 3rem;">
+                    <h2 style="color: var(--primary-red); margin-bottom: 1.5rem; font-size: 1.8rem;">🌟 Notícia em Destaque</h2>
+                    <article class="featured-news-card" style="display: none;">
+                        <div class="featured-news-image">
+                            <img src="" alt="" style="width: 100%; height: 300px; object-fit: cover; border-radius: 8px;">
+                            <div class="news-badge featured-badge">DESTAQUE</div>
+                        </div>
+                        <div class="featured-news-content">
+                            <div class="news-meta">
+                                <span class="news-date"></span>
+                                <span class="news-author"></span>
+                                <span class="news-read-time"></span>
+                            </div>
+                            <h3 class="featured-news-title"></h3>
+                            <p class="featured-news-summary"></p>
+                            <div class="news-tags"></div>
+                            <button class="news-read-more-btn" onclick="openNewsModal(this)">Ler Notícia Completa</button>
+                        </div>
+                    </article>
                 </div>
 
                 <!-- News Grid -->
-                <div class="cards-grid">
-                    <!-- Recent News -->
-                    <article class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                            <span style="background: var(--light-gray); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">COMUNICADO</span>
-                            <small style="color: var(--text-gray);">📅 02/01/2025</small>
-                        </div>
-                        <h3 style="margin-bottom: 1rem;">📋 Documentos Necessários para Inscrição</h3>
-                        <p style="margin-bottom: 1rem;">Confira a lista completa de documentos necessários para realizar sua inscrição no cursinho preparatório 2025.1.</p>
-                        <ul style="color: var(--text-gray); margin-bottom: 1rem; padding-left: 1rem;">
-                            <li>• RG e CPF (originais e cópias)</li>
-                            <li>• Comprovante de residência atual</li>
-                            <li>• Comprovante de renda familiar</li>
-                            <li>• Histórico escolar ou declaração</li>
-                        </ul>
-                        <a href="../assets/documents/lista-documentos.pdf" style="color: var(--primary-red); font-weight: 600;" target="_blank" rel="noopener">
-                            📥 Baixar Lista Completa
-                        </a>
-                    </article>
-
-                    <article class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                            <span style="background: var(--light-gray); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">NOVIDADE</span>
-                            <small style="color: var(--text-gray);">📅 28/12/2024</small>
-                        </div>
-                        <h3 style="margin-bottom: 1rem;">🏫 Novas Salas de Aula Inauguradas</h3>
-                        <p style="margin-bottom: 1rem;">Inauguramos duas novas salas de aula climatizadas e equipadas com projetores para melhor atender nossos alunos.</p>
-                        <p style="color: var(--text-gray);">As novas instalações permitirão que mais turmas sejam formadas e ofereçam um ambiente ainda mais adequado para o aprendizado.</p>
-                    </article>
-
-                    <article class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                            <span style="background: var(--light-gray); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">RESULTADO</span>
-                            <small style="color: var(--text-gray);">📅 20/12/2024</small>
-                        </div>
-                        <h3 style="margin-bottom: 1rem;">🎉 Resultados ENEM 2024</h3>
-                        <p style="margin-bottom: 1rem;">Nossos alunos conquistaram excelentes resultados no ENEM 2024! Parabenizamos todos pela dedicação.</p>
-                        <div style="background: var(--light-gray); padding: 1rem; border-radius: 4px;">
-                            <p style="margin: 0; text-align: center;">
-                                <strong>85% dos alunos</strong> obtiveram nota acima de 600 pontos<br>
-                                <strong>40 aprovações</strong> em universidades públicas
-                            </p>
-                        </div>
-                    </article>
-
-                    <article class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                            <span style="background: var(--light-gray); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">INFORMATIVO</span>
-                            <small style="color: var(--text-gray);">📅 15/12/2024</small>
-                        </div>
-                        <h3 style="margin-bottom: 1rem;">📚 Novos Materiais Didáticos</h3>
-                        <p style="margin-bottom: 1rem;">Recebemos novos materiais didáticos atualizados para 2025, incluindo apostilas de todas as disciplinas do ENEM.</p>
-                        <p style="color: var(--text-gray);">Todo o material será fornecido gratuitamente aos alunos matriculados, incluindo acesso à plataforma digital de estudos.</p>
-                    </article>
-
-                    <article class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                            <span style="background: var(--light-gray); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">EVENTO</span>
-                            <small style="color: var(--text-gray);">📅 10/12/2024</small>
-                        </div>
-                        <h3 style="margin-bottom: 1rem;">🎓 Palestra sobre Escolha de Carreira</h3>
-                        <p style="margin-bottom: 1rem;">Realizamos uma palestra especial sobre orientação vocacional com psicólogos especializados em educação.</p>
-                        <p style="color: var(--text-gray);">O evento contou com a participação de mais de 100 alunos e suas famílias, oferecendo importantes orientações sobre escolha profissional.</p>
-                    </article>
-
-                    <article class="card">
-                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                            <span style="background: var(--light-gray); color: var(--text-dark); padding: 0.25rem 0.75rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">PARCERIA</span>
-                            <small style="color: var(--text-gray);">📅 05/12/2024</small>
-                        </div>
-                        <h3 style="margin-bottom: 1rem;">🤝 Nova Parceria com UFMG</h3>
-                        <p style="margin-bottom: 1rem;">Firmamos parceria com a Universidade Federal de Minas Gerais para oferecer palestras e visitas técnicas aos nossos alunos.</p>
-                        <p style="color: var(--text-gray);">A parceria inclui também a disponibilização de professores voluntários estudantes de pós-graduação da UFMG.</p>
-                    </article>
+                <div class="news-grid">
+                    <!-- News items will be loaded here by CMS -->
                 </div>
 
-
+                <!-- Load More Button -->
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="cta-button" id="load-more-news" style="display: none;">
+                        Carregar Mais Notícias
+                    </button>
+                </div>
             </div>
         </section>
     </main>
+
+    <!-- News Modal -->
+    <div class="news-modal" id="newsModal" style="display: none;">
+        <div class="news-modal-overlay" onclick="closeNewsModal()"></div>
+        <div class="news-modal-content">
+            <button class="news-modal-close" onclick="closeNewsModal()" aria-label="Fechar">&times;</button>
+            <div class="news-modal-header">
+                <img class="news-modal-image" src="" alt="">
+                <div class="news-modal-meta">
+                    <div class="news-badge"></div>
+                    <div class="news-modal-info">
+                        <span class="news-modal-date"></span>
+                        <span class="news-modal-author"></span>
+                        <span class="news-modal-read-time"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="news-modal-body">
+                <h1 class="news-modal-title"></h1>
+                <div class="news-modal-tags"></div>
+                <div class="news-modal-content-body"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -160,7 +132,7 @@
 
                 <div class="contact-info">
                     <div class="contact-item">
-                        <span class="contact-icon" aria-hidden="true">💬</span>
+                        <img src="../images/icons/icone_whatsapp_vermelha.png" alt="WhatsApp" class="contact-icon-img" style="width: 24px; height: 24px;">
                         <h5>WhatsApp</h5>
                         <p><a href="https://wa.me/5538999999999" target="_blank" rel="noopener">(38) 99999-9999</a></p>
                     </div>
@@ -176,9 +148,9 @@
 
                 <div class="contact-info">
                     <div class="contact-item">
-                        <span class="contact-icon" aria-hidden="true">📍</span>
-                        <h5>Endereço</h5>
-                        <p>Rua da Educação, 123<br>Centro - Montes Claros/MG</p>
+                        <img src="../images/icons/logo_instagram_vermelha.png" alt="Instagram" class="contact-icon-img" style="width: 24px; height: 24px;">
+                        <h5>Instagram</h5>
+                        <p>@lucasrusilva, nos acompanhe também por aqui</p>
                     </div>
                 </div>
             </div>
@@ -188,7 +160,6 @@
             <div class="container">
                 <div class="footer-bottom-content">
                     <p>© 2025 Comunica ICA UFMG — Todos os direitos reservados</p>
-
                 </div>
             </div>
         </div>
@@ -196,12 +167,13 @@
 
     <!-- WhatsApp Float Button -->
     <a href="https://wa.me/5538999999999" class="whatsapp-float" target="_blank" rel="noopener" title="Fale conosco no WhatsApp" aria-label="Abrir conversa no WhatsApp">
-        💬
+        <img src="../images/icons/logo_whatsapp.png" alt="WhatsApp" style="width: 24px; height: 24px; filter: brightness(0) invert(1);">
     </a>
 
     <!-- JavaScript Files -->
     <script src="../js/utils.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/cms-data.js"></script>
+    <script src="../js/news.js"></script>
 </body>
 </html>

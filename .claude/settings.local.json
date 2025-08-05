@@ -11,7 +11,8 @@
       "Bash(for file in *.html)",
       "Bash(do sed -i 's/.*<a href=\"\"privacidade.html\"\">Políticas de Privacidade<\\/a>//g' \"$file\")",
       "Bash(done)",
-      "Bash(do sed -i '/Edital.*href.*editais.*Edital/d' \"$file\")"
+      "Bash(do sed -i '/Edital.*href.*editais.*Edital/d' \"$file\")",
+      "WebFetch(domain:ufmg.br)"
     ],
     "deny": []
   }
