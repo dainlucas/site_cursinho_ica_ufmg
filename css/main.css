@@ -439,27 +439,29 @@ footer {
     .header-content {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         background: var(--primary-red);
         padding: 0.5rem 1.5rem;
         margin-left: -1rem;
         margin-right: -1rem;
         width: 100vw;
         box-sizing: border-box;
-        border-radius: 0;
+        border-radius: 0 !important;
         position: relative;
         left: 0;
         right: 0;
     }
     
     /* Logo + Nome como um grupo */
-    .header-left {
+    .header-left,
+    .header-top {
         display: flex;
         align-items: center;
         gap: 0.8rem;
     }
     
-    .header-left .logo-image {
+    .header-left .logo-image,
+    .header-top .logo-image {
         height: 55px;
         width: auto;
         filter: brightness(0) invert(1);
@@ -488,20 +490,20 @@ footer {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         transition: all 0.3s ease;
         cursor: pointer;
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
     }
     
     .menu-toggle:hover {
         background: white;
-        transform: translateY(-1px);
+        transform: translateY(-50%) translateY(-1px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     
     .menu-toggle:active {
-        transform: translateY(0);
-    }
-    
-    .menu-toggle:active {
-        transform: scale(0.95);
+        transform: translateY(-50%) scale(0.95);
     }
     
     .menu-toggle.active {
@@ -509,22 +511,16 @@ footer {
         border-color: var(--light-gray);
     }
     
-    /* For other pages - keep original layout */
+    /* For other pages - use same mobile layout as homepage */
     .header-top {
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        width: 100vw;
-        background: var(--primary-red);
-        padding: 1rem 1.5rem;
-        margin-left: -1rem;
-        margin-right: -1rem;
-        position: relative;
+        gap: 0.8rem;
     }
     
     .header-top .logo-image {
-        height: 90px;
-        max-width: 280px;
+        height: 55px;
+        width: auto;
         filter: brightness(0) invert(1);
     }
     
@@ -606,22 +602,18 @@ footer {
         padding: 0 0.5rem;
     }
     
-    .header-top .logo-image,
-    .header-left .logo-image {
-        height: 45px;
-        max-width: 100px;
-        filter: brightness(0) invert(1);
-    }
     
     .header-content {
         padding: 0.15rem 1rem;
     }
     
-    .header-left {
+    .header-left,
+    .header-top {
         gap: 0.6rem;
     }
     
-    .header-left .logo-image {
+    .header-left .logo-image,
+    .header-top .logo-image {
         height: 45px;
     }
     
@@ -632,5 +624,6 @@ footer {
     .menu-toggle {
         padding: 0.5rem 0.8rem;
         font-size: 0.85rem;
+        right: 1rem;
     }
 }
