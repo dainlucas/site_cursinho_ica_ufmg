@@ -18,6 +18,8 @@ header {
     background-color: var(--white);
     padding: 1rem 0;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1;
 }
 
 .header-content {
@@ -148,6 +150,17 @@ header {
 .hero .container {
     position: relative;
     z-index: 2;
+}
+
+/* Force hero section behind menu */
+@media (max-width: 768px) {
+    .hero,
+    .hero::before,
+    .hero .container,
+    .hero-content,
+    .hero-text {
+        z-index: 0 !important;
+    }
 }
 
 .hero-content {
@@ -283,52 +296,76 @@ footer {
         gap: 0;
         position: relative;
     }
-
+    
+    /* Simple dropdown menu */
     .nav-menu {
         display: none;
-        position: absolute;
-        top: calc(100% + 0.5rem);
-        left: 1rem;
-        right: 1rem;
-        background: var(--white);
-        flex-direction: column;
-        padding: 0;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        z-index: 1000;
+        position: fixed;
+        top: 90px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        min-width: 200px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
         border-radius: 8px;
         overflow: hidden;
-        margin: 0;
+        z-index: 99999999 !important;
+        border: 2px solid var(--primary-red);
+        opacity: 1 !important;
+    }
+    
+    .nav-menu.active {
+        display: block !important;
     }
     
     nav {
-        position: static;
-        width: 100%;
-    }
-
-    .nav-menu.active {
-        display: flex !important;
+        position: relative;
+        width: auto;
     }
     
     .nav-menu li {
         margin: 0;
         list-style: none;
+        background: #ffffff !important;
+        opacity: 1 !important;
     }
     
     .nav-menu a {
         display: block;
         padding: 1rem 1.5rem;
         font-size: 1rem;
-        color: var(--text-dark);
+        color: var(--text-dark) !important;
         text-decoration: none;
-        border-bottom: 1px solid var(--light-gray);
-        transition: background-color 0.3s ease;
+        font-weight: 500;
+        border-bottom: 1px solid #f0f0f0;
+        transition: all 0.3s ease;
         margin: 0;
         border-radius: 0;
+        background: #ffffff !important;
+        opacity: 1 !important;
     }
     
     .nav-menu a:hover {
-        background-color: var(--light-pink);
+        background: var(--primary-red);
+        color: white;
+    }
+    
+    .nav-menu a.active {
+        position: relative;
+        background: rgba(220, 53, 69, 0.1);
         color: var(--primary-red);
+        font-weight: 600;
+    }
+    
+    .nav-menu a.active::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--primary-red);
     }
     
     .nav-menu li:last-child a {
@@ -426,10 +463,10 @@ footer {
         padding: 0;
         width: 100%;
         margin: 0;
-        border-radius: 0 !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+        z-index: 1 !important;
     }
     
-    .header-content,
     .header-left,
     .header-top {
         border-radius: 0 !important;
@@ -439,18 +476,30 @@ footer {
     .header-content {
         display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
         background: var(--primary-red);
-        padding: 0.5rem 1.5rem;
-        margin-left: -1rem;
-        margin-right: -1rem;
+        padding: 1rem 0;
+        margin: 0;
         width: 100vw;
         box-sizing: border-box;
-        border-radius: 0 !important;
+        border-radius: 0 0 12px 12px !important;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
         position: relative;
-        left: 0;
+        left: 50%;
         right: 0;
+        transform: translateX(-50%);
+        padding-left: 3rem;
+        padding-right: 3rem;
+        z-index: 1 !important;
     }
+    
+    /* Força border-radius e sombra em todas as páginas */
+    body:not(:has(.top-bar)) .header-content,
+    .header-content {
+        border-radius: 0 0 12px 12px !important;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+    }
+    
     
     /* Logo + Nome como um grupo */
     .header-left,
@@ -462,7 +511,7 @@ footer {
     
     .header-left .logo-image,
     .header-top .logo-image {
-        height: 55px;
+        height: 65px;
         width: auto;
         filter: brightness(0) invert(1);
     }
@@ -490,20 +539,17 @@ footer {
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         transition: all 0.3s ease;
         cursor: pointer;
-        position: absolute;
-        right: 1.5rem;
-        top: 50%;
-        transform: translateY(-50%);
+        position: static;
     }
     
     .menu-toggle:hover {
         background: white;
-        transform: translateY(-50%) translateY(-1px);
+        transform: translateY(-1px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     
     .menu-toggle:active {
-        transform: translateY(-50%) scale(0.95);
+        transform: scale(0.95);
     }
     
     .menu-toggle.active {

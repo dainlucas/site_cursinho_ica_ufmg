@@ -11,15 +11,18 @@ function initializeMenuToggle() {
     const navMenu = getElement('#navMenu');
 
     if (menuToggle && navMenu) {
-        addEventHandler(menuToggle, 'click', () => {
+        // Toggle menu on button click
+        addEventHandler(menuToggle, 'click', (e) => {
+            e.stopPropagation();
             navMenu.classList.toggle('active');
             menuToggle.classList.toggle('active');
+            
             const menuIcon = menuToggle.querySelector('.menu-icon');
             if (menuIcon) {
                 menuIcon.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
             }
         });
-
+        
         // Close menu when clicking on a link
         addEventHandler(navMenu, 'click', (e) => {
             if (e.target.tagName === 'A') {
